@@ -1,0 +1,30 @@
+.chat-container {
+  
+  width: 700px;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 10px;
+  margin:100px auto;
+}
+
+.messages {
+  max-height: 500px;;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.user {
+  text-align: right;
+  background: #d1ffd1;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+.bot {
+  text-align: left;
+  background: #f1f1f1;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 8px;
+}

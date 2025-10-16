@@ -1,0 +1,14 @@
+<div class="chat-container text-dark input-group mb-3">
+  <!-- <div class="input-group mb-3"> -->
+    <div class="messages form-control ">
+      <div *ngFor="let msg of messages" [ngClass]="msg.sender" >
+        {{ msg.text }}
+      </div>
+    </div>
+  <!-- </div> -->
+
+  <div class="input-group mb-3">
+    <input [(ngModel)]="userInput" class="form-control" (keyup.enter)="sendMessage()" placeholder="Ask me something..." />
+    <button type="button" (click)="sendMessage()" class="btn btn-primary">Warning</button>
+  </div>
+</div>

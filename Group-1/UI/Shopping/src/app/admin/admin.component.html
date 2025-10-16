@@ -1,0 +1,214 @@
+<div class="admin-container">
+  <div class="admin-layout">
+    <!-- Modern Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="admin-profile">
+          <div class="admin-avatar">
+            <i class="fas fa-user-shield"></i>
+          </div>
+          <div class="admin-details">
+            <h3>Admin Panel</h3>
+            <p>E-commerce Dashboard</p>
+          </div>
+        </div>
+      </div>
+      
+      <nav class="sidebar-nav">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <button class="nav-link" [class.active]="dashboard" (click)="showDashboard()">
+              <i class="fas fa-chart-pie"></i>
+              <span>Dashboard</span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" [class.active]="displayProduct" (click)="displayProducts()">
+              <i class="fas fa-box"></i>
+              <span>All Products</span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" [class.active]="addProduct" (click)="addProducts()">
+              <i class="fas fa-plus-circle"></i>
+              <span>Add Products</span>
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" (click)="logout()">
+              <i class="fas fa-sign-out-alt"></i>
+              <span>Logout</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <div class="content-wrapper">
+        <!-- Product Management Views -->
+        <div *ngIf="displayProduct" class="page-content">
+          <app-product-list></app-product-list>
+        </div>
+        
+        <div *ngIf="addProduct" class="page-content">
+          <app-product-form></app-product-form>
+        </div>
+        
+        <!-- Enhanced Dashboard -->
+        <div *ngIf="dashboard" class="dashboard">
+          <!-- Dashboard Header -->
+          <div class="dashboard-header">
+            <div class="header-content">
+              <h1 class="dashboard-title">Dashboard Overview</h1>
+              <p class="dashboard-subtitle">Welcome back! Here's what's happening with your store today.</p>
+            </div>
+            <div class="header-actions">
+              <button class="btn btn-primary">
+                <i class="fas fa-download"></i>
+                Export Report
+              </button>
+            </div>
+          </div>
+
+          <!-- Stats Grid -->
+          <div class="stats-grid">
+            <div class="stat-card revenue">
+              <div class="stat-icon">
+                <i class="fas fa-dollar-sign"></i>
+              </div>
+              <div class="stat-content">
+                <h3 class="stat-value">$45,231.89</h3>
+                <p class="stat-label">Total Revenue</p>
+                <div class="stat-change positive">
+                  <i class="fas fa-arrow-up"></i>
+                  <span>+20.1% from last month</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card orders">
+              <div class="stat-icon">
+                <i class="fas fa-shopping-cart"></i>
+              </div>
+              <div class="stat-content">
+                <h3 class="stat-value">1,234</h3>
+                <p class="stat-label">Total Orders</p>
+                <div class="stat-change positive">
+                  <i class="fas fa-arrow-up"></i>
+                  <span>+12.5% from last month</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card customers">
+              <div class="stat-icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <div class="stat-content">
+                <h3 class="stat-value">5,678</h3>
+                <p class="stat-label">Active Customers</p>
+                <div class="stat-change positive">
+                  <i class="fas fa-arrow-up"></i>
+                  <span>+8.2% from last month</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-card products">
+              <div class="stat-icon">
+                <i class="fas fa-boxes"></i>
+              </div>
+              <div class="stat-content">
+                <h3 class="stat-value">892</h3>
+                <p class="stat-label">Total Products</p>
+                <div class="stat-change negative">
+                  <i class="fas fa-arrow-down"></i>
+                  <span>-2.4% from last month</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Grid -->
+          <div class="content-grid">
+            <!-- Recent Orders -->
+            <div class="content-card orders-card">
+              <div class="card-header">
+                <h3 class="card-title">Recent Orders</h3>
+                <button class="btn btn-outline">View All</button>
+              </div>
+              <div class="card-content">
+                <div class="order-list">
+                  <div class="order-item">
+                    <div class="order-info">
+                      <div class="order-id">#ORD-001</div>
+                      <div class="order-product">Wireless Headphones</div>
+                      <div class="order-customer">John Doe</div>
+                    </div>
+                    <div class="order-status">
+                      <span class="status-badge completed">Completed</span>
+                    </div>
+                    <div class="order-amount">$299.99</div>
+                  </div>
+
+                  <div class="order-item">
+                    <div class="order-info">
+                      <div class="order-id">#ORD-002</div>
+                      <div class="order-product">Smart Watch</div>
+                      <div class="order-customer">Jane Smith</div>
+                    </div>
+                    <div class="order-status">
+                      <span class="status-badge processing">Processing</span>
+                    </div>
+                    <div class="order-amount">$549.99</div>
+                  </div>
+
+                  <div class="order-item">
+                    <div class="order-info">
+                      <div class="order-id">#ORD-003</div>
+                      <div class="order-product">Laptop Stand</div>
+                      <div class="order-customer">Mike Johnson</div>
+                    </div>
+                    <div class="order-status">
+                      <span class="status-badge pending">Pending</span>
+                    </div>
+                    <div class="order-amount">$89.99</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="content-card actions-card">
+              <div class="card-header">
+                <h3 class="card-title">Quick Actions</h3>
+              </div>
+              <div class="card-content">
+                <div class="action-buttons">
+                  <button class="action-btn primary" (click)="addProducts()">
+                    <i class="fas fa-plus"></i>
+                    <span>Add Product</span>
+                  </button>
+                  <button class="action-btn secondary">
+                    <i class="fas fa-users-cog"></i>
+                    <span>Manage Users</span>
+                  </button>
+                  <button class="action-btn secondary">
+                    <i class="fas fa-chart-line"></i>
+                    <span>View Analytics</span>
+                  </button>
+                  <button class="action-btn secondary">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>

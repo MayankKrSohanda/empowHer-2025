@@ -1,0 +1,85 @@
+<div class="container py-4">
+  <div class="card shadow-lg border-0 rounded-4">
+    <div class="card-header bg-primary text-white rounded-top-4">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center">
+        <div>
+          <h1 class="h4 mb-0">Edit Product</h1>
+          <small class="text-light opacity-75">Update product information and settings</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-body bg-light rounded-bottom-4">
+      <form (ngSubmit)="onSubmit()" *ngIf="product" class="needs-validation" novalidate>
+        <div class="row g-4">
+          <!-- Product Information -->
+          <div class="col-lg-8">
+            <div class="card border-0 shadow-sm rounded-4">
+              <div class="card-body">
+                <h3 class="h5 mb-2">Product Information</h3>
+                <p class="text-muted mb-4">Basic details about your product</p>
+
+                <!-- Product Title -->
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Product Title <span class="text-danger">*</span></label>
+                  <input type="text" class="form-control" [(ngModel)]="product.title" name="title" required />
+                </div>
+
+                <!-- Description -->
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Description <span class="text-danger">*</span></label>
+                  <textarea rows="4" class="form-control" [(ngModel)]="product.description" name="description" required></textarea>
+                </div>
+
+                <!-- Price and Stock -->
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label fw-semibold">Price <span class="text-danger">*</span></label>
+                    <div class="input-group">
+                      <span class="input-group-text">$</span>
+                      <input type="number" step="0.01" class="form-control" [(ngModel)]="product.price" name="price" required />
+                    </div>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label fw-semibold">Stock Quantity <span class="text-danger">*</span></label>
+                    <input type="number" class="form-control" [(ngModel)]="product.availableQuantity" name="availableQuantity" required />
+                  </div>
+                </div>
+
+                <!-- Category -->
+                <div class="mb-3">
+                  <label class="form-label fw-semibold">Category <span class="text-danger">*</span></label>
+                  <select class="form-select" [(ngModel)]="product.categoryId" name="categoryId" required>
+                    <option *ngFor="let category of categories" [value]="category.categoryId">
+                      {{ category.categoryName }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="col-lg-4">
+            <div class="card border-0 shadow-sm rounded-4">
+              <div class="card-body text-center d-flex flex-column justify-content-center">
+                <h3 class="h5 mb-2">Actions</h3>
+                <p class="text-muted mb-4">Save or go back</p>
+
+                <div class="d-grid gap-3">
+                  <button type="submit" class="btn btn-primary btn-lg">
+                    <i class="bi bi-save me-2"></i> Update Product
+                  </button>
+                  <button type="button" class="btn btn-outline-secondary btn-lg" routerLink="/admin">
+                    <i class="bi bi-arrow-left me-2"></i> Cancel
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+/* Overall container */
+.cart-checkout {
+  background: #0d0d0d; /* near black */
+  padding: 20px;
+  border-radius: 12px;
+  margin-top:100px !important;
+
+}
+
+/* Card custom */
+.card {
+  border-radius: 12px;
+}
+
+/* Table hover */
+.hover-row:hover {
+  background-color: #1a1a1a !important;
+  transition: 0.3s;
+}
+
+/* Form control styling */
+.form-control,
+.form-select {
+  transition: all 0.3s ease-in-out;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #ffc107 !important;
+  box-shadow: 0 0 8px rgba(255, 193, 7, 0.6) !important;
+}
+
+/* Buttons */
+.btn-warning {
+  transition: 0.3s ease;
+}
+
+.btn-warning:hover {
+  background-color: #e0a800 !important;
+  color: #fff !important;
+}
