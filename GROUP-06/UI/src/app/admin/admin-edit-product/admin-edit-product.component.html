@@ -1,0 +1,52 @@
+<h2>Edit Product</h2>
+
+<form *ngIf="product" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+  <input
+    type="text"
+    [(ngModel)]="product.title"
+    name="title"
+    placeholder="Title"
+    required
+  />
+Enter Description:
+  <input
+    type="text"
+    [(ngModel)]="product.description"
+    name="description"
+    placeholder="Description"
+  />
+Enter Price:
+  <input
+    type="number"
+    [(ngModel)]="product.price"
+    name="price"
+    placeholder="Price"
+  />
+
+  <select [(ngModel)]="product.category" name="category">
+   
+          <option value="">All Categories</option>
+          <option *ngFor="let cat of categories" [value]="cat.id">
+            {{ cat.name }}
+          </option>
+    
+  </select>
+
+  <div>
+    <label for="image">Product Image:</label>
+    <input type="file" id="image" (change)="onFileSelected($event)" />
+  </div>
+
+  <div *ngIf="product.imageUrl">
+    <p>Current Image:</p>
+    <img
+      [src]="'http://localhost:8080' + product.imageUrl"
+      alt="Product Image"
+      width="120"
+      height="120"
+    />
+  </div>
+
+  <button type="submit">Save Changes</button>
+  <button routerLink="/admin/products" type="button">Cancel</button>
+</form>

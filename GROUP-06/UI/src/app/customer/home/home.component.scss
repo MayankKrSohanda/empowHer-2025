@@ -1,0 +1,136 @@
+:host {
+  display: block;
+  padding: 2rem;
+background: linear-gradient(135deg, #e0f0ff, #f0f2f5);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header spacing */
+app-header {
+  margin-bottom: 2rem;
+}
+
+/* Row containing products */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: -0.75rem;
+ margin-top:30px;
+}
+
+/* Columns for product cards */
+.col-md-4 {
+  padding: 0.75rem;
+  display: flex;
+}
+
+/* Optional: Center cards vertically if heights vary */
+.col-md-4 app-card {
+  flex: 1;
+}
+
+/* Product cards (from app-card) enhancements */
+app-card {
+  width: 100%;
+  display: block;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  .card {
+    border: none;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .card-img-top {
+      height: 220px;
+      object-fit: contain; /* ensures full image visible */
+      background: #f9f9f9;
+      transition: transform 0.3s ease;
+
+      .card:hover & {
+        transform: scale(1.05);
+      }
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+
+      .card-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 0.5rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .card-text {
+        font-size: 0.95rem;
+        color: #555;
+        flex-grow: 1;
+        line-height: 1.3rem;
+        margin-bottom: 1rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .mt-auto {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        .card-text {
+          font-size: 1.1rem;
+          font-weight: 700;
+          color: #e74c3c;
+        }
+
+        button.btn {
+          width: 100%;
+          padding: 0.5rem 0;
+          border-radius: 8px;
+          font-weight: 600;
+          background: linear-gradient(45deg, #007bff, #0056b3);
+          border: none;
+          color: #fff;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background: linear-gradient(45deg, #0056b3, #003f7f);
+            transform: translateY(-2px);
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .col-md-4 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (max-width: 576px) {
+  .col-md-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,21 @@
+<!-- Removed app-product-filter as ProductFilterComponent does not exist -->
+<!-- <form [formGroup]="searchForm">
+  <input
+    class="form-control"
+    type="text"
+    placeholder="Search..."
+    formControlName="searchTerm"
+  />
+</form> -->
+<div id="alertContainer" 
+     class="position-fixed top-0 start-50 translate-middle-x mt-3" 
+     style="z-index: 1050; width: 50%;">
+</div>
+
+<app-header (filtersChanged)="onFiltersChanged($event)"></app-header>
+<div class="row">
+  <div *ngFor="let a of products" class="col-md-4 mb-3">
+    <app-card [product]="a" (viewDetails)="viewDetailsEvent($event)" ></app-card>
+  </div>
+</div> 
+

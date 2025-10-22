@@ -1,0 +1,160 @@
+<!-- 🔹 Fixed Navbar -->
+<nav 
+  class="navbar navbar-expand-lg shadow-sm fixed-top"
+  style="background-color: #f8f9fa; z-index: 1100;"
+>
+  <div class="container-fluid">
+
+    <!-- 🔹 Logo -->
+    <a class="navbar-brand fw-bold text-primary" routerLink="/">ShopLogo</a>
+
+    <!-- 🔹 Mobile Toggle -->
+    <button 
+      class="navbar-toggler" 
+      type="button" 
+      data-bs-toggle="collapse" 
+      data-bs-target="#navbarContent"
+      aria-controls="navbarContent" 
+      aria-expanded="false" 
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- 🔹 Navbar Content -->
+    <div class="collapse navbar-collapse justify-content-between" id="navbarContent">
+      
+      <!-- 🔹 Filter Form -->
+      <form 
+        [formGroup]="filtersForm" 
+        class="d-flex align-items-center flex-wrap gap-3 mx-auto"
+        style="max-width: 100%; justify-content: center;"
+      >
+
+        <!-- Search -->
+        <div class="d-flex align-items-center">
+          <input
+            type="text"
+            class="form-control shadow-sm"
+            placeholder="Search products..."
+            formControlName="searchText"
+            style="border-radius: 25px; width: 200px;"
+          />
+        </div>
+
+        <!-- Category -->
+        <div class="d-flex align-items-center">
+          <select 
+            class="form-select shadow-sm" 
+            formControlName="selectedCategory"
+            style="border-radius: 25px; width: 160px;"
+          >
+            <option value="">All Categories</option>
+            <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</option>
+          </select>
+        </div>
+
+        <!-- Price Range -->
+        <div class="d-flex align-items-center gap-2">
+          <label for="maxPrice" class="mb-0 fw-semibold">Max:</label>
+          <input 
+            type="range" 
+            id="maxPrice" 
+            class="form-range shadow-sm" 
+            formControlName="maxPrice"
+            min="0" max="100000" step="100" 
+            style="width: 130px; height: 6px; border-radius: 10px;"
+          />
+          <span class="fw-semibold text-primary" style="min-width: 70px; text-align: right;">
+            {{ filtersForm.get('maxPrice')?.value | currency:'INR':'symbol':'1.0-0' }}
+          </span>
+        </div>
+
+        <!-- Sort -->
+        <div class="d-flex align-items-center gap-2">
+          <label class="fw-semibold mb-0">Sort:</label>
+          <select 
+            class="form-select shadow-sm" 
+            formControlName="sortBy"
+            style="border-radius: 25px; width: 160px;"
+          >
+            <option value="lowToHigh">Low → High</option>
+            <option value="highToLow">High → Low</option>
+          </select>
+        </div>
+
+      </form>
+
+      <!-- 🔹 Action Buttons (Aligned Right) -->
+      <div class="d-flex align-items-center gap-2 ms-lg-3 mt-2 mt-lg-0">
+        <button 
+          type="button" 
+          class="btn btn-outline-primary shadow-sm fw-semibold px-3"
+          (click)="goToCart()" 
+          style="border-radius: 25px;"
+        >
+          🛒 Cart
+        </button>
+
+        <button 
+          type="button" 
+          class="btn btn-outline-primary shadow-sm fw-semibold px-3"
+          (click)="orderHistory()" 
+          style="border-radius: 25px;"
+        >
+          📦 Orders
+        </button>
+
+        <button 
+          type="button" 
+          class="btn btn-outline-danger shadow-sm fw-semibold px-3"
+          (click)="logout()" 
+          style="border-radius: 25px;"
+        >
+          🚪 Logout
+        </button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- 🔹 Space to avoid content overlap -->
+<div style="margin-top: 110px;"></div>
+
+<!-- 🔹 Styles -->
+<style>
+/* Input, Select, and Button Consistency */
+.form-control, .form-select, .btn {
+  height: 38px;
+}
+
+/* Center content evenly */
+.navbar-collapse form,
+.navbar-collapse .d-flex.align-items-center {
+  align-items: center;
+}
+
+/* Hover effects */
+.btn-outline-primary:hover {
+  background-color: #0d6efd;
+  color: white;
+}
+.btn-outline-danger:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Range input styling */
+input[type=range] {
+  -webkit-appearance: none;
+  background: #dee2e6;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #0d6efd;
+  cursor: pointer;
+}
+</style>

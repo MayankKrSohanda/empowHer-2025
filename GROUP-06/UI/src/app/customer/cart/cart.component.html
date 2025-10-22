@@ -1,0 +1,19 @@
+<div class="cart-container">
+  <h2>Your Cart</h2>
+
+  <div *ngIf="cartItems.length === 0" class="empty-cart">
+    <p>No items in cart.</p>
+  </div>
+
+  <div class="product-grid">
+    <div *ngFor="let item of cartItems" class="product-card">
+      <h3>{{ item.product.title }}</h3>
+      <p><strong>Price:</strong> ₹{{ item.product.price }}</p>
+      <p><strong>Quantity:</strong> {{ item.quantity }}</p>
+<button (click)="removeFromCart(item.product.productId)" class="remove-btn">Remove</button>
+    </div>
+  </div>
+  <button (click)="toOrderDetail()">Checkout</button> 
+    <button routerLink="/customer/home" >back</button> 
+
+</div>

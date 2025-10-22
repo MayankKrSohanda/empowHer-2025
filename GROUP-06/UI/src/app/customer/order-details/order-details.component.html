@@ -1,0 +1,85 @@
+<div class="order-form-container">
+  <h2>Order Details</h2>
+
+  <!-- Cart Items Table -->
+  <table class="table table-bordered" *ngIf="cartItems.length > 0">
+    <thead>
+      <tr>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Price (₹)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of cartItems">
+        <td>{{ item.product.title }}</td>
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.product.price * item.quantity }}</td>
+      </tr>
+      <tr>
+        <td colspan="2"><strong>Total Amount</strong></td>
+        <td><strong>{{ getTotalAmount() }}</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Order Form -->
+  <form #orderForm="ngForm" (ngSubmit)="placeOrder(orderForm)">
+    <!-- Delivery Address -->
+    <div class="form-group">
+      <label for="address">Shipping Address</label>
+      <textarea id="address" name="deliveryAddress" class="form-control" rows="3"
+                required
+                [(ngModel)]="order.deliveryAddress"
+                #deliveryAddress="ngModel"></textarea>
+      <div class="text-danger" *ngIf="deliveryAddress.invalid && deliveryAddress.touched">
+        Address is required.
+      </div>
+    </div>
+
+    <!-- Contact Number -->
+    <div class="form-group">
+      <label for="phone">Contact Number</label>
+      <input type="text" id="phone" name="phone" class="form-control"
+             required pattern="^[0-9]{10}$"
+             [(ngModel)]="order.phone"
+             #phone="ngModel">
+      <div class="text-danger" *ngIf="phone.invalid && phone.touched">
+        Contact number must be 10 digits.
+      </div>
+    </div>
+
+    <!-- Payment Mode -->
+    <div class="form-group">
+      <label>Payment Mode</label>
+      <div>
+        <label>
+          <input type="radio" name="paymentMode" value="Cash on Delivery"
+                 required
+                 [(ngModel)]="order.paymentMode"
+                 #paymentMode="ngModel"> Cash on Delivery
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="radio" name="paymentMode" value="Credit/Debit Card"
+                 [(ngModel)]="order.paymentMode"> Credit/Debit Card
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="radio" name="paymentMode" value="UPI"
+                 [(ngModel)]="order.paymentMode"> UPI
+        </label>
+      </div>
+      <div class="text-danger" *ngIf="paymentMode.invalid && paymentMode.touched">
+        Please select a payment mode.
+      </div>
+    </div>
+
+    <!-- Place Order Button -->
+    <button type="submit" class="btn btn-primary" [disabled]="orderForm.invalid || cartItems.length === 0">
+      Place Order
+    </button>
+  </form>
+</div>

@@ -1,0 +1,92 @@
+// signup.component.scss
+
+// Background styling
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #6a11cb, #2575fc); // smooth gradient
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+// Card styling
+.card {
+  background-color: #ffffff;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  }
+
+  h2 {
+    color: #2575fc;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+
+  form {
+    .form-label {
+      font-weight: 600;
+      color: #555555;
+    }
+
+    .form-control,
+    .form-select {
+      border-radius: 0.5rem;
+      padding: 0.65rem 0.75rem;
+      border: 1px solid #ced4da;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+      &:focus {
+        border-color: #2575fc;
+        box-shadow: 0 0 8px rgba(37, 117, 252, 0.4);
+      }
+    }
+
+    button {
+      background: #2575fc;
+      border: none;
+      font-weight: 600;
+      padding: 0.7rem 0;
+      border-radius: 0.5rem;
+      transition: background 0.3s ease, transform 0.2s ease;
+
+      &:hover {
+        background: #6a11cb;
+        transform: translateY(-2px);
+      }
+    }
+
+    a {
+      color: #2575fc;
+      font-weight: 500;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #6a11cb;
+        text-decoration: underline;
+      }
+    }
+
+    .text-center {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      color: #555;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 576px) {
+  .card {
+    width: 90%;
+    padding: 1.5rem;
+  }
+}

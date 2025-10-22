@@ -1,0 +1,30 @@
+<div class="container mt-4">
+  <h2>Manage Products</h2>
+
+  <button class="btn btn-primary mb-3" (click)="goToAddProduct()">Add Product</button>
+  <button class="btn btn-primary mb-3" (click)="logout()">log out</button>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Product Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.productId }}</td>
+        <td>{{ product.title }}</td>
+        <td>{{ product.price | currency }}</td>
+   
+        <td>
+          <button class="btn btn-warning btn-sm" (click)="goToEditProduct(product.productId)">Edit</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteProduct(product.productId)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

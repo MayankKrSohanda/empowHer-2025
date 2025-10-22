@@ -1,0 +1,166 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e0f0ff, #f0f2f5);
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.order-form-container {
+  background: #fff;
+  width: 100%;
+  max-width: 900px; // wider card
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column; // vertical stacking
+  gap: 2rem;
+
+  h2 {
+    text-align: center;
+    color: #007bff;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+
+  /* Cart Table */
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    background: #fff;
+
+    th, td {
+      padding: 1rem;
+      text-align: left;
+      font-size: 0.95rem;
+      color: #333;
+    }
+
+    th {
+      background: #007bff;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    tr:nth-child(even) {
+      background: #f4f6f8;
+    }
+
+    tr:last-child td {
+      font-weight: 700;
+      border-top: 2px solid #007bff;
+      color: #111;
+    }
+
+    tr:hover {
+      background: #eaf4ff;
+      transition: background 0.2s ease;
+    }
+  }
+
+  /* Form Section */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; // vertical spacing
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+
+      label {
+        font-weight: 600;
+        color: #2c3e50;
+      }
+
+      input[type="text"], textarea {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        transition: all 0.2s ease;
+        background: #fff;
+
+        &:focus {
+          outline: none;
+          border-color: #007bff;
+          box-shadow: 0 0 6px rgba(0,123,255,0.2);
+        }
+      }
+
+      .text-danger {
+        font-size: 0.85rem;
+        color: #e74c3c;
+      }
+    }
+
+    input[type="radio"] {
+      margin-right: 0.5rem;
+      accent-color: #007bff;
+      cursor: pointer;
+    }
+
+    /* Submit Button */
+    button.btn {
+      width: 100%;
+      padding: 0.75rem 0;
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 10px;
+      border: none;
+      background: #007bff;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,123,255,0.3);
+
+      &:hover:not(:disabled) {
+        background: #0056b3;
+        transform: translateY(-2px);
+      }
+
+      &:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .order-form-container {
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 768px) {
+  :host {
+    padding: 1.5rem;
+  }
+
+  table th, table td {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  button.btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  table th, table td {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+}

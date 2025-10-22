@@ -1,0 +1,105 @@
+.card {
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+  }
+
+  .product-image {
+    width: 100%;
+    height: 220px; /* uniform height */
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* center content horizontally */
+    text-align: center;  /* center text */
+    padding: 1.25rem 1rem;
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 0.5rem;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 100%;
+    }
+
+    .card-text {
+      color: #6c757d;
+      font-size: 0.95rem;
+      line-height: 1.4rem;
+      margin-bottom: 1rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .mt-auto {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      .card-text {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #e74c3c;
+        margin-bottom: 0;
+      }
+
+      button.btn {
+        width: 100%;
+        padding: 0.5rem 0;
+        border-radius: 10px;
+        font-weight: 600;
+        background: linear-gradient(45deg, #007bff, #0056b3);
+        border: none;
+        color: #fff;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: linear-gradient(45deg, #0056b3, #003f7f);
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+}
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+  .card {
+    .card-body {
+      padding: 1rem;
+
+      .card-title {
+        font-size: 1rem;
+      }
+
+      .card-text {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
