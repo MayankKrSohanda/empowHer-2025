@@ -1,0 +1,70 @@
+<div class="manage-orders-page py-5">
+
+  <!-- Back to Dashboard -->
+  <button class="btn btn-secondary mb-3" (click)="goToDashboard()">
+    <i class="bi bi-house-door-fill me-2"></i> Back to Dashboard
+  </button>
+
+  <h3 class="mb-2 text-center fw-bold text-success">Manage Orders</h3>
+  <p class="text-center text-muted mb-4">Track and update order statuses smoothly</p>
+
+  <!-- Toast -->
+  <div class="position-fixed top-0 start-50 translate-middle-x mt-3" style="z-index: 1055;">
+    <div *ngIf="successMessage" class="toast align-items-center text-white bg-success border-0 show animate-toast">
+      <div class="d-flex">
+        <div class="toast-body">{{ successMessage }}</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" (click)="successMessage=''"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading Spinner -->
+  <div *ngIf="loading" class="text-center mb-3">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Orders Table -->
+  <div class="table-responsive animate-fadein">
+    <table class="table table-hover align-middle text-center">
+      <thead class="table-dark">
+        <tr>
+          <th>Order ID</th>
+          <th>Total Price ($)</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders" [ngClass]="'order-row'">
+          <td>{{ order.orderId }}</td>
+          <td>{{ order.totalPrice | number:'1.2-2' }}</td>
+          <td>
+            <span class="badge rounded-pill px-3 py-2"
+                  [ngClass]="{
+                    'bg-secondary': order.status === 'Placed',
+                    'bg-primary': order.status === 'Shipped',
+                    'bg-success': order.status === 'Delivered'
+                  }">
+              {{ order.status }}
+            </span>
+          </td>
+          <td>
+            <div class="d-flex justify-content-center gap-2">
+              <button class="btn btn-sm btn-primary" [disabled]="order.status !== 'Placed'" (click)="shipOrder(order)">
+                Ship
+              </button>
+              <button class="btn btn-sm btn-success" [disabled]="order.status !== 'Shipped'" (click)="deliverOrder(order)">
+                Deliver
+              </button>
+            </div>
+          </td>
+        </tr>
+        <tr *ngIf="orders.length === 0">
+          <td colspan="4" class="text-center py-3">No orders found</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

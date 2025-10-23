@@ -1,0 +1,73 @@
+<div class="checkout-page">
+  <div class="checkout-container">
+
+    <!-- Buttons above card -->
+    <div class="checkout-buttons">
+      <button class="btn btn-secondary" [routerLink]="['/cart']">← Back to Cart</button>
+      <button class="btn btn-info" [routerLink]="['/orders']">📜 View Orders</button>
+    </div>
+
+    <!-- Toast above the card -->
+    <div *ngIf="showOrderPlaced" id="order-toast">
+      {{ orderPlacedMessage }}
+    </div>
+
+    <!-- Checkout Card -->
+    <div class="card checkout-card">
+      <div class="card-header">
+        🛍️ Place Order
+      </div>
+
+      <div class="card-body">
+        <!-- Order Summary -->
+        <h5 class="mb-3 fw-bold">Order Summary</h5>
+        <ul class="list-group mb-3">
+          <li class="list-group-item d-flex justify-content-between align-items-center"
+              *ngFor="let item of items">
+            {{ item.productName }} (x{{ item.quantity }})
+            <span class="fw-bold">${{ item.price * item.quantity }}</span>
+          </li>
+        </ul>
+
+        <div class="total-section">
+          Total: ${{ total }}
+        </div>
+
+        <!-- Checkout Form -->
+        <form (ngSubmit)="placeOrder()" #checkoutForm="ngForm">
+          <div class="mb-3">
+            <label class="form-label">Contact Number</label>
+            <input type="text" class="form-control"
+                   [(ngModel)]="checkoutData.contactNumber"
+                   name="contactNumber" required>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Delivery Address</label>
+            <textarea class="form-control" rows="3"
+                      [(ngModel)]="checkoutData.address"
+                      name="address" required></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Payment Method</label>
+            <select class="form-select"
+                    [(ngModel)]="checkoutData.paymentMethod"
+                    name="paymentMethod" required>
+              <option value="COD">Cash on Delivery</option>
+              <option value="CARD">Credit/Debit Card</option>
+              <option value="UPI">UPI</option>
+            </select>
+          </div>
+
+          <div class="d-grid">
+            <button type="submit" class="btn btn-success">
+              ✅ Place Order
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>

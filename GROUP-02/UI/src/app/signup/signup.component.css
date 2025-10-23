@@ -1,0 +1,151 @@
+.signup-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+/* Background overlay */
+.bg-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0.65),
+    rgba(0, 0, 0, 0.55)
+  ), url('/assets/lblue2.png');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  filter: brightness(85%);
+}
+
+/* Center form + messages */
+.form-container {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; /* stack messages above card */
+  align-items: center;
+  justify-content: center;
+}
+
+/* Glass card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  color: #fff;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  width: 95%;
+  max-width: 550px;
+  padding: 2.5rem;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Page title and text */
+.signup-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  margin-bottom: 0.3rem;
+}
+
+.signup-subtext {
+  font-size: 1.1rem;
+  color: #dcdcdc;
+  max-width: 400px;
+  margin: 0 auto 1.5rem auto;
+  line-height: 1.4;
+}
+
+.brand {
+  color: #00d9ff;
+  font-weight: bold;
+}
+
+/* Inputs */
+input.form-control {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+input:focus {
+  border-color: #00d9ff;
+  box-shadow: 0 0 6px rgba(0, 217, 255, 0.5);
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(90deg, #007bff, #00d9ff);
+  border: none;
+  font-weight: 600;
+  border-radius: 10px;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #00d9ff, #007bff);
+}
+
+
+/* ✅ Success / Error messages OUTSIDE card */
+/* ✅ Success & Error Messages */
+.signup-message {
+  font-weight: 500;
+  opacity: 0;
+  animation: fadeInMessage 0.8s forwards;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.4);
+}
+
+/* ✅ Success message - bright white */
+.signup-message.text-success {
+  color: #ffffff !important; /* pure white */
+}
+
+/* ✅ Error message - strong blood red */
+.signup-message.text-danger {
+ color: #ff6b6b !important;/* blood red */
+}
+
+/* ✅ Validation error text (inside form) */
+.text-warning.small {
+  color: #ff6b6b !important; /* same blood red for consistency */
+  font-weight: 500;
+  text-shadow: none;
+  margin-top: 4px;
+}
+
+
+
+
+/* Fade-in animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInMessage {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .glass-card {
+    padding: 2rem;
+    max-width: 90%;
+  }
+  .signup-title {
+    font-size: 1.6rem;
+  }
+}

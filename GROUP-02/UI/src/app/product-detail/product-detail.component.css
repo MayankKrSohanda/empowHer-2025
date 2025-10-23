@@ -1,0 +1,105 @@
+/* Page background */
+.product-detail-wrapper {
+  background-color: #d4edda; /* soft green background */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 1rem;
+}
+
+/* Vertical Card with pop-up animation */
+.vertical-card {
+  background-color: #fcfcf7; /* soft cream card */
+  max-width: 500px;
+  width: 100%;
+  border: none;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transform: translateY(50px); /* start slightly below */
+  opacity: 0; /* start hidden */
+  transition: all 0.6s ease; /* smooth pop animation */
+}
+
+.vertical-card.show-card {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Product Image */
+.vertical-card img {
+  width: 100%;
+  max-height: 350px;
+  object-fit: contain;
+  background-color: #fff;
+  border-radius: 1rem;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #3b82f6; /* soft blue */
+  border: none;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #2563eb; /* slightly darker blue */
+}
+
+.btn-outline-secondary {
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+/* Quantity badge */
+.quantity-badge {
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+/* Back Button */
+.btn-outline-primary {
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .vertical-card img {
+    max-height: 250px;
+  }
+}
+
+/* Cart Notification (Darker for contrast) */
+.cart-notification {
+  max-width: 500px;
+  margin: 0 auto 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  color: #fff;
+  background-color: #2d6a4f; /* darker green than background */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.4s ease;
+}
+
+.cart-notification.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Info row for Price & Quantity */
+.info-row {
+  font-size: 1.1rem;
+}
+.info-row .fw-semibold {
+  font-weight: 600;
+}

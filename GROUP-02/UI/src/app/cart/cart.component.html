@@ -1,0 +1,90 @@
+<div class="cart-page-wrapper">
+  <div class="cart-page py-5 fade-in-page">
+    <div class="container" style="max-width: 1150px;">
+
+      <!-- Header -->
+      <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+        <button class="btn btn-light border mb-2" routerLink="/home">
+          <i class="bi bi-house me-2"></i> Back to Home
+        </button>
+        <h3 class="text-center flex-grow-1 mb-2 mb-md-0 fw-bold cart-title">🛒 MY CART</h3>
+      </div>
+
+      <!-- Empty -->
+      <div *ngIf="cartItems.length === 0" class="alert alert-warning text-center">
+        Your cart is empty.
+      </div>
+
+      <!-- Table Header -->
+      <div *ngIf="cartItems.length > 0" class="cart-header shadow-sm p-3 mb-3 rounded d-flex align-items-center text-center fw-semibold text-secondary bg-white">
+        <div class="col-heading text-start" style="flex: 2;">Image</div>
+        <div class="col-heading text-start" style="flex: 2;">Title</div>
+        <div class="col-heading" style="flex: 2;">Price</div>
+        <div class="col-heading" style="flex: 2.5;">Quantity</div>
+        <div class="col-heading" style="flex: 2;">Total</div>
+        <div class="col-heading" style="flex: 2;">Action</div>
+      </div>
+
+      <!-- Cart Items -->
+      <div *ngIf="cartItems.length > 0" class="cart-items">
+        <div *ngFor="let item of cartItems" class="cart-item-card shadow-sm mb-3 bg-white rounded d-flex align-items-center flex-wrap p-3">
+
+          <!-- Image -->
+          <div style="flex: 2; display: flex; justify-content: flex-start;">
+            <img 
+              [src]="'http://localhost:8080' + item.imageUrl" 
+              [alt]="item.productName" 
+              class="img-fluid" 
+              style="width: 80px; height: 80px; object-fit: cover;" 
+               loading="eager"  
+            />
+          </div>
+
+          <!-- Title -->
+          <div class="cart-col text-start" style="flex: 2;">
+            <h6 class="fw-semibold mb-1">{{ item.productName }}</h6>
+          </div>
+
+          <!-- Price -->
+          <div class="cart-col" style="flex: 2;">
+            ${{ item.price | number: '1.2-2' }}
+          </div>
+
+          <!-- Quantity -->
+          <div class="cart-col d-flex justify-content-center align-items-center gap-2" style="flex: 2.5;">
+            <button class="btn btn-outline-secondary btn-sm" (click)="decreaseQuantity(item)">−</button>
+            <span class="fw-bold quantity-text">{{ item.quantity < 10 ? '0' + item.quantity : item.quantity }}</span>
+            <button class="btn btn-outline-secondary btn-sm" (click)="increaseQuantity(item)">+</button>
+          </div>
+
+          <!-- Total -->
+          <div class="cart-col fw-semibold text-success" style="flex: 2;">
+            ${{ (item.price * item.quantity) | number: '1.2-2' }}
+          </div>
+
+          <!-- Remove -->
+          <div class="cart-col" style="flex: 2;">
+            <button class="btn btn-sm btn-outline-danger" (click)="removeItem(item.id, $event)">Remove</button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Cart Summary -->
+      <div *ngIf="cartItems.length > 0" class="d-flex justify-content-end mt-4 cart-summary-wrapper">
+        <div class="cart-summary-card shadow-sm p-4 rounded">
+          <h5 class="fw-bold mb-3 text-success">Cart Total: ${{ getTotal() | number: '1.2-2' }}</h5>
+          <div class="d-flex gap-2">
+            <button class="btn btn-success fw-semibold" [routerLink]="['/checkout']">
+              ✅ Place Order
+            </button>
+            <button class="btn btn-outline-danger fw-semibold" (click)="clearCart()">
+              🗑️ Clear Cart
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

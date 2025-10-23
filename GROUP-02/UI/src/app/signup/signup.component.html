@@ -1,0 +1,82 @@
+<div class="signup-wrapper">
+  <div class="bg-overlay"></div>
+
+  <div class="form-container">
+
+    <!-- Success & Error Messages OUTSIDE the card -->
+    <div *ngIf="successMessage" class="signup-message text-success mb-3 text-center">
+      {{ successMessage }}
+    </div>
+    <div *ngIf="errorMessage" class="signup-message text-danger mb-3 text-center">
+      {{ errorMessage }}
+    </div>
+
+    <div class="card shadow-lg p-4 border-0 glass-card">
+      <!-- Page Title -->
+      <h3 class="mb-3 text-center fw-bold text-light">Create Your Account</h3>
+      <p class="text-center text-light-50 mb-4">
+        Join us and start shopping with <span class="brand">ShopHub</span> today!
+      </p>
+
+      <!-- Signup Form -->
+      <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" autocomplete="off">
+
+        <!-- Full Name -->
+        <div class="mb-3">
+          <label class="form-label text-white">Full Name</label>
+          <input
+            type="text"
+            formControlName="name"
+            class="form-control bg-transparent text-white border-light"
+            placeholder="Enter your name"
+            autocomplete="off"
+          />
+          <div *ngIf="signupForm.get('name')?.touched && signupForm.get('name')?.invalid" class="text-warning small">
+            Name is required (min 3 characters)
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+          <label class="form-label text-white">Email</label>
+          <input
+            type="email"
+            formControlName="email"
+            class="form-control bg-transparent text-white border-light"
+            placeholder="Enter your email"
+            autocomplete="new-email"
+          />
+          <div *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.invalid" class="text-warning small">
+            Valid email is required
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="mb-3">
+          <label class="form-label text-white">Password</label>
+          <input
+            type="password"
+            formControlName="password"
+            class="form-control bg-transparent text-white border-light"
+            placeholder="Enter your password"
+            autocomplete="new-password"
+          />
+          <div *ngIf="signupForm.get('password')?.touched && signupForm.get('password')?.invalid" class="text-warning small">
+            Password must be at least 6 characters
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button class="btn btn-primary w-100 mt-3" type="submit" [disabled]="signupForm.invalid">
+          Sign Up
+        </button>
+      </form>
+
+      <!-- Login Redirect -->
+      <p class="mt-4 text-center small text-white-50">
+        Already have an account?
+        <a routerLink="/login" class="text-decoration-none fw-bold text-info">Login here</a>
+      </p>
+    </div>
+  </div>
+</div>

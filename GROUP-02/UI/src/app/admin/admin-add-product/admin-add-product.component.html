@@ -1,0 +1,103 @@
+<div class="admin-product-page d-flex flex-column align-items-center">
+
+  <!-- Toast container above the card -->
+  <div class="toast-container-above-card mb-3">
+    <div
+      class="toast align-items-center text-white bg-success border-0 mb-2"
+      role="alert"
+      *ngIf="successMessage"
+      [class.show]="successMessage"
+      aria-live="assertive"
+      aria-atomic="true"
+    >
+      <div class="d-flex">
+        <div class="toast-body">{{ successMessage }}</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" (click)="clearMessages()"></button>
+      </div>
+    </div>
+
+    <div
+      class="toast align-items-center text-white bg-danger border-0 mb-2"
+      role="alert"
+      *ngIf="errorMessage"
+      [class.show]="errorMessage"
+      aria-live="assertive"
+      aria-atomic="true"
+    >
+      <div class="d-flex">
+        <div class="toast-body">{{ errorMessage }}</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" (click)="clearMessages()"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Form Card -->
+  <div class="container d-flex justify-content-center">
+    <form [formGroup]="productForm" (ngSubmit)="saveProduct()" class="product-form-card p-4">
+
+      <h2 class="mb-4 text-center fw-bold text-dark">
+        {{ productId ? 'Edit Product' : 'Add Product' }}
+      </h2>
+
+      <!-- Title -->
+      <div class="mb-3">
+        <label for="title" class="form-label fw-bold">Title</label>
+        <input id="title" type="text" class="form-control form-input" formControlName="title" placeholder="Enter product title" />
+        <div *ngIf="productForm.get('title')?.invalid && productForm.get('title')?.touched" class="text-danger">
+          Title is required
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="mb-3">
+        <label for="description" class="form-label fw-bold">Description</label>
+        <textarea id="description" class="form-control form-input" formControlName="description" rows="3" placeholder="Enter product description"></textarea>
+      </div>
+
+      <!-- Price & Quantity -->
+      <div class="row mb-3">
+        <div class="col">
+          <label for="price" class="form-label fw-bold">Price</label>
+          <input id="price" type="number" class="form-control form-input" formControlName="price" />
+          <div *ngIf="productForm.get('price')?.invalid && productForm.get('price')?.touched" class="text-danger">
+            Price is required
+          </div>
+        </div>
+        <div class="col">
+          <label for="quantity" class="form-label fw-bold">Quantity</label>
+          <input id="quantity" type="number" class="form-control form-input" formControlName="quantity" />
+          <div *ngIf="productForm.get('quantity')?.invalid && productForm.get('quantity')?.touched" class="text-danger">
+            Quantity is required
+          </div>
+        </div>
+      </div>
+
+      <!-- Category -->
+      <div class="mb-3">
+        <label for="categoryId" class="form-label fw-bold">Category</label>
+        <select id="categoryId" class="form-select form-input" formControlName="categoryId">
+          <option [ngValue]="null">-- Select Category --</option>
+          <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</option>
+        </select>
+        <div *ngIf="productForm.get('categoryId')?.invalid && productForm.get('categoryId')?.touched" class="text-danger">
+          Category is required
+        </div>
+      </div>
+
+      <!-- Image Upload -->
+      <div class="mb-3">
+        <label class="form-label fw-bold">Product Image</label>
+        <input type="file" (change)="onFileSelected($event)" class="form-control form-input" />
+        <div class="mt-2" *ngIf="imagePreview">
+          <p class="fw-bold">Preview:</p>
+          <img [src]="imagePreview" alt="Image Preview" class="img-thumbnail" style="max-width:200px;" />
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-success w-100 btn-lg mt-3">
+        {{ productId ? 'Update' : 'Add' }} Product
+      </button>
+    </form>
+  </div>
+</div>

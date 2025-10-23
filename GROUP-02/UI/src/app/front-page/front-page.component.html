@@ -1,0 +1,49 @@
+<div class="frontpage-wrapper">
+  <div class="bg-overlay"></div>
+
+  <div class="main-content text-center">
+    <!-- Welcome title -->
+    <h1 class="welcome-title">Welcome to ShopHub</h1>
+
+    <!-- Buttons -->
+    <div class="d-flex gap-3 mb-2 mt-3 justify-content-center">
+      <button class="btn btn-outline-light btn-lg" (click)="userLogin()">User Login</button>
+      <button class="btn btn-primary btn-lg" (click)="adminLogin()">Admin Login</button>
+      <button class="btn btn-success btn-lg" (click)="userSignup()">Sign Up</button>
+    </div>
+
+    <!-- Signup text -->
+    <p class="signup-text mt-2">
+      Don’t have an account? <a (click)="userSignup()">Sign Up</a>
+    </p>
+
+    <!-- Tagline -->
+    <p class="intro-text mt-4">
+       Your one-stop destination for shopping smarter, managing faster, and earning more.
+    </p>
+
+    <!-- Feature Carousel -->
+    <div class="features-carousel-wrapper mt-5">
+      <div class="features-carousel" [style.transform]="'translateX(-' + currentIndex * 100 + '%)'">
+        <div class="feature-card" *ngFor="let f of features">
+          <i class="{{ f.icon }} display-4 mb-2"></i>
+          <h5>{{ f.title }}</h5>
+          <p>{{ f.desc }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Social Media Links -->
+    <!-- Social Media Links -->
+    <div class="social-section mt-4">
+      <p class="follow-text mb-3">Follow us on</p>
+     <div class="social-icons d-flex justify-content-center gap-4">
+       <a href="https://facebook.com" target="_blank" class="social-icon facebook"><i class="bi bi-facebook"></i></a>
+       <a href="https://twitter.com" target="_blank" class="social-icon twitter"><i class="bi bi-twitter"></i></a>
+       <a href="https://instagram.com" target="_blank" class="social-icon instagram"><i class="bi bi-instagram"></i></a>
+       <a href="https://youtube.com" target="_blank" class="social-icon youtube"><i class="bi bi-youtube"></i></a>
+    </div>
+</div>
+
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div
+  class="card h-100 shadow-sm rounded-3 overflow-hidden hover-scale position-relative"
+  style="cursor: pointer"
+  (click)="viewDetailsEvent(product.id)"
+>
+  <!-- Best Seller Badge above image -->
+  <div class="best-seller-wrapper" *ngIf="product.bestSeller">
+    <span class="badge best-seller-badge">
+      <i class="bi bi-star-fill"></i> Best Seller
+    </span>
+  </div>
+
+  <!-- Image Wrapper -->
+  <div class="text-center product-image-wrapper mt-3">
+    <img 
+      [src]="'http://localhost:8080' + product.imageUrl" 
+      [alt]="product.title" 
+      class="card-img-top img-fluid product-image" 
+       loading="eager" 
+    />
+  </div>
+
+  <!-- Body -->
+  <div class="card-body d-flex flex-column">
+    <h5 class="card-title text-truncate">{{ product.title }}</h5>
+    <p class="card-text flex-grow-1 text-truncate">{{ product.description }}</p>
+
+    <div class="mt-auto">
+      <p class="card-text fw-bold">${{ product.price }}</p>
+
+      <div class="d-flex gap-2">
+        <button
+          *ngIf="product.quantity > 0; else outOfStock"
+          class="btn btn-primary flex-fill btn-sm"
+          (click)="onAddToCart($event)"
+        >
+          Add to Cart
+        </button>
+
+        <ng-template #outOfStock>
+          <button class="btn btn-danger flex-fill btn-sm" disabled>
+            Out of Stock
+          </button>
+        </ng-template>
+
+        <a
+          [routerLink]="['/products', product.id]"
+          class="btn btn-outline-secondary flex-fill btn-sm"
+          (click)="$event.stopPropagation()"
+        >
+          View Details
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

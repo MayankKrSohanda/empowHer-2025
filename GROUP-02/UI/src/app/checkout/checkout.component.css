@@ -1,0 +1,125 @@
+/* Full page background */
+.checkout-page {
+  background-color: #d4edda; /* light green */
+  min-height: 100vh;
+  padding: 3rem 1rem;
+  display: flex;
+  justify-content: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+/* Container */
+.checkout-container {
+  width: 100%;
+  max-width: 900px; /* increased from 700px for wider card */
+  margin: 0 auto;
+}
+
+/* Buttons above card */
+.checkout-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  justify-content: flex-start;
+}
+
+/* Checkout Card */
+.checkout-card {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 1.5rem;
+  width: 100%;
+}
+
+.checkout-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+}
+
+/* Card header */
+.checkout-card .card-header {
+  background-color: #007bff;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 1.2rem;
+}
+
+/* Order summary items */
+.checkout-card .list-group-item {
+  border: none;
+  padding: 0.75rem 1rem;
+  background-color: #f8f9fa;
+  margin-bottom: 0.4rem;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+/* Total section */
+.checkout-card .total-section {
+  text-align: right;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+/* Form fields */
+.checkout-card .form-label {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.checkout-card .form-control,
+.checkout-card .form-select {
+  border-radius: 8px;
+  padding: 0.65rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ced4da;
+  transition: all 0.2s ease-in-out;
+}
+
+.checkout-card .form-control:focus,
+.checkout-card .form-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+}
+
+/* Place order button */
+.checkout-card .btn-success {
+  font-weight: 700;
+  padding: 0.7rem;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.checkout-card .btn-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Toast above card */
+#order-toast {
+  font-weight: 700;
+  border-radius: 10px;
+  background-color: #198754; /* green */
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  text-align: center;
+  margin: 0 auto 1rem auto;
+  display: block;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  animation: slide-in 0.5s ease forwards;
+}
+
+/* Slide-in animation */
+@keyframes slide-in {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}

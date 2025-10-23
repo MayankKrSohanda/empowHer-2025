@@ -1,0 +1,65 @@
+.hover-scale {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hover-scale:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card {
+  height: 100%;
+  position: relative;
+}
+
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body .mt-auto {
+  margin-top: auto;
+}
+
+
+/* Product Image */
+.product-image-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 100%; /* 1:1 aspect ratio for uniform card layout */
+  overflow: hidden;
+}
+
+.product-image-wrapper img.product-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* fit inside card without cutting */
+}
+
+/* Best Seller Badge */
+.best-seller-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0.5rem 0.75rem 0 0.75rem; /* space above image */
+}
+
+.best-seller-badge {
+  background-color: #ffc107; /* yellow */
+  color: #000;
+  font-size: 0.8rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.best-seller-badge i {
+  font-size: 0.8rem;
+  color: #000;
+}

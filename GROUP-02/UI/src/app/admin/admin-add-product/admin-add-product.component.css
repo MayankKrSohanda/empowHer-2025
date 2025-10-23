@@ -1,0 +1,64 @@
+.admin-product-page {
+  min-height: 100vh;
+  background-color: #d4edda;
+  padding: 50px 0;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Toast container above the card */
+.toast-container-above-card {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Toast styling */
+.toast.show {
+  display: flex !important;
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Card styling */
+.product-form-card {
+  width: 100%;
+  max-width: 600px; /* smaller now */
+  background: #ffffffcc;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  padding: 2.5rem;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Input fields styling */
+.form-input {
+  border-radius: 10px;
+  border: 1px solid #ced4da;
+  padding: 10px 12px;
+  font-weight: 500;
+}
+
+/* Label styling */
+.form-label {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Heading styling */
+h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #155724;
+  margin-bottom: 1.5rem;
+}
+
+/* Fade-in card animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px);}
+  to { opacity: 1; transform: translateY(0);}
+}

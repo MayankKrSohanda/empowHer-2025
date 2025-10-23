@@ -1,0 +1,114 @@
+.admin-update-page {
+  min-height: 100vh;
+  background-color: #d4edda;
+  padding: 50px 0;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* Heading styling */
+.page-heading {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #155724;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+/* ✅ Success Message (just below heading, fixed height space preserved) */
+.update-success-message {
+  background-color: #28a745;
+  color: white;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  animation: fadeSlideDown 0.5s ease-in-out;
+}
+
+/* Card styling */
+.update-card {
+  width: 100%;
+  max-width: 550px;
+  background: #ffffffcc;
+  border-radius: 18px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Input styles */
+.form-input {
+  border-radius: 10px;
+  border: 1px solid #ced4da;
+  padding: 10px 12px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 8px rgba(40, 167, 69, 0.3);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadein {
+  animation: fadeIn 0.9s ease-in-out;
+}
+
+/* Buttons */
+.btn-success {
+  background-color: #28a745;
+  border: none;
+  font-weight: 600;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
+.btn-secondary {
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .update-card {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+
+  .page-heading {
+    font-size: 1.6rem;
+  }
+}

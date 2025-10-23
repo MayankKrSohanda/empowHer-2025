@@ -1,0 +1,82 @@
+<div class="container-fluid admin-dashboard">
+  <div class="row min-vh-100">
+    <!-- Sidebar -->
+    <nav class="col-md-3 col-lg-2 d-md-block bg-primary sidebar text-white p-4">
+      <h4 class="text-center fw-bold mb-4">Admin Panel</h4>
+      <ul class="nav flex-column">
+        <li class="nav-item mb-2">
+          <a routerLink="/admin/home" routerLinkActive="active" class="nav-link text-white">🏠 Dashboard</a>
+        </li>
+        <li class="nav-item mb-2">
+          <a routerLink="/admin/products" routerLinkActive="active" class="nav-link text-white">📦 All Products</a>
+        </li>
+        <li class="nav-item mb-2"><a routerLink="/admin/add-product" routerLinkActive="active" class="nav-link text-white">
+  ➕ Add Product
+</a>
+
+          </li>
+       <li class="nav-item mb-2">
+  <a routerLink="/admin/orders" routerLinkActive="active" class="nav-link text-white">
+    📝 Manage Orders
+  </a>
+</li>
+
+      </ul>
+      <div class="mt-4">
+        <button class="btn btn-light w-100 fw-semibold" (click)="logout()">Logout</button>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-5 py-4 bg-light">
+      <h3 class="fw-bold text-primary mb-4 text-center text-md-start">Welcome, {{ adminName }} 👋</h3>
+
+      <!-- Totals Section -->
+      <div class="row g-3 mb-5 text-center">
+        <div class="col-sm-6 col-md-4">
+          <div class="card stat-card border-0 shadow-sm py-4">
+            <h6 class="text-muted mb-2">Total Placed</h6>
+            <h2 class="fw-bold text-primary">{{ totalPlaced }}</h2>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="card stat-card border-0 shadow-sm py-4">
+            <h6 class="text-muted mb-2">Total Shipped</h6>
+            <h2 class="fw-bold text-warning">{{ totalShipped }}</h2>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+          <div class="card stat-card border-0 shadow-sm py-4">
+            <h6 class="text-muted mb-2">Total Delivered</h6>
+            <h2 class="fw-bold text-success">{{ totalDelivered }}</h2>
+          </div>
+        </div>
+      </div>
+
+      <!-- Weekly Earnings Chart (Now Wider) -->
+      <div class="card shadow-sm border-0 mb-4 p-4 chart-section mx-auto">
+        <h5 class="fw-bold text-secondary text-center mb-4">Track Weekly Earnings!</h5>
+        <div class="chart-container large-chart">
+          <canvas
+            baseChart
+            [data]="barChartData"
+            [options]="barChartOptions"
+            [type]="'bar'">
+          </canvas>
+        </div>
+      </div>
+
+      <!-- Weekly Summary Boxes -->
+      <div class="row g-3 justify-content-center">
+        <div
+          class="col-6 col-sm-4 col-md-3 col-lg-2"
+          *ngFor="let week of weeks; let i = index">
+          <div class="week-box bg-white text-center shadow-sm rounded p-3">
+            <h6 class="text-muted mb-1">{{ week }}</h6>
+            <p class="fw-bold text-primary mb-0">${{ earnings[i] | number: '1.0-0' }}</p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>

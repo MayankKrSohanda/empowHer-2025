@@ -1,0 +1,94 @@
+.cart-page {
+  background-color: #d4edda; /* Greenish background */
+  min-height: 100vh;
+}
+
+/* Fade-in slide-up for entire page */
+.fade-in-page {
+  width: 100%; /* prevent flex/jerk issues */
+  animation: fadeInUpPage 0.6s ease forwards;
+  transform: translate3d(0, 20px, 0); /* initial safe position */
+  opacity: 0;
+}
+
+@keyframes fadeInUpPage {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+
+.cart-item-card {
+  background-color: #ffffffcc; /* Slightly transparent to blend with green bg */
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cart-item-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+.cart-item-card div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cart-item-card div.text-start {
+  justify-content: flex-start;
+}
+
+.cart-col h6 {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.cart-col button {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.85rem;
+}
+
+.cart-col img {
+  border-radius: 5px;
+}
+
+.cart-header {
+  display: flex;
+  align-items: center;
+  background-color: #ffffffcc;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.cart-header .col-heading {
+  text-align: center;
+}
+
+.cart-header .col-heading.text-start {
+  text-align: left;
+}
+
+.cart-summary-wrapper {
+  display: flex;
+  justify-content: flex-end; /* Moves summary card to right */
+  margin-top: 1rem;
+}
+
+.cart-summary-card {
+  min-width: 250px;
+  background-color: #ffffffcc;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}

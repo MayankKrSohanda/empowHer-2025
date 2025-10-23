@@ -1,0 +1,82 @@
+<div class="admin-update-page d-flex flex-column align-items-center">
+
+  <!-- Page Heading -->
+  <h2 class="page-heading text-center fw-bold text-primary mb-3 animate-fadein">
+    Update Product
+  </h2>
+
+  <!-- ✅ Success Message just below the heading -->
+  <div class="update-success-message animate-toast" *ngIf="updateSuccess">
+    ✅ Product updated successfully!
+    <button type="button" class="btn-close btn-close-white ms-2" (click)="updateSuccess = false"></button>
+  </div>
+
+  <!-- Product Update Card -->
+  <div class="container d-flex justify-content-center animate-fadein"
+       *ngIf="product && categories.length; else loading">
+    <div class="update-card shadow p-4 mx-auto">
+      <form (ngSubmit)="onUpdate()">
+        <!-- Title -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Title</label>
+          <input type="text" [(ngModel)]="product.title" name="title"
+                 class="form-control form-input" required />
+        </div>
+
+        <!-- Description -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Description</label>
+          <textarea [(ngModel)]="product.description" name="description"
+                    class="form-control form-input" rows="3"></textarea>
+        </div>
+
+        <!-- Price & Quantity -->
+        <div class="row mb-3">
+          <div class="col">
+            <label class="form-label fw-semibold">Price</label>
+            <input type="number" [(ngModel)]="product.price" name="price"
+                   class="form-control form-input" required />
+          </div>
+
+          <div class="col">
+            <label class="form-label fw-semibold">Quantity</label>
+            <input type="number" [(ngModel)]="product.quantity" name="quantity"
+                   class="form-control form-input" required />
+          </div>
+        </div>
+
+        <!-- Category -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Category</label>
+          <select [(ngModel)]="product.categoryId" name="categoryId"
+                  class="form-select form-input" required>
+            <option *ngFor="let cat of categories" [value]="cat.id">
+              {{ cat.name }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Image Upload -->
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Product Image</label>
+          <input type="file" (change)="onFileSelected($event)" class="form-control form-input" />
+          <div *ngIf="imagePreview" class="mt-2 text-center">
+            <p class="fw-semibold mb-1">Preview:</p>
+            <img [src]="imagePreview" alt="Image Preview"
+                 class="img-fluid rounded shadow-sm" style="max-height: 150px;" />
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-success px-4 me-2">Update</button>
+          <button type="button" class="btn btn-secondary px-4" (click)="onCancel()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <ng-template #loading>
+    <p class="text-center mt-5">Loading product details and categories...</p>
+  </ng-template>
+</div>

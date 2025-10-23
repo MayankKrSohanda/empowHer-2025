@@ -1,0 +1,7 @@
+export interface User {
+  id?: number;
+  name?: string;      // ✅ Add name
+  email: string;
+  password: string;
+  role?: string;
+}

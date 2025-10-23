@@ -1,0 +1,97 @@
+.login-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
+
+/* Background overlay - same as signup */
+.bg-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0.65),
+    rgba(0, 0, 0, 0.55)
+  ), url('/assets/lblue2.png');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  filter: brightness(85%);
+}
+
+/* Form container */
+.form-container {
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Glass card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  color: #fff;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  width: 95%;
+  max-width: 600px;
+  padding: 2.8rem;
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Text styles */
+.brand {
+  color: #00d9ff;
+  font-weight: bold;
+}
+
+/* Inputs */
+input.form-control {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+input:focus {
+  border-color: #00d9ff;
+  box-shadow: 0 0 6px rgba(0, 217, 255, 0.5);
+}
+
+/* Validation text */
+.error-text {
+  color: #ff6b6b; /* soft red */
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+/* Messages */
+.login-message {
+  font-weight: 500;
+  opacity: 0;
+  animation: fadeInMessage 0.8s forwards;
+}
+
+.login-message.text-success {
+  color: #ffffff !important; /* pure white */
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInMessage {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
