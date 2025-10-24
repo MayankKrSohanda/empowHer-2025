@@ -1,0 +1,164 @@
+<div class="card p-4 mb-5 shadow rounded-4 border position-realtive">
+   <i 
+    class="bi bi-x-lg position-absolute top-0 end-0 m-3 text-danger cursor-pointer"
+    (click)="goToAdminHome()"
+    title="Go Back"
+    style="font-size: 1.5rem;"
+  ></i>
+  <h4 class="mb-4 text-primary">Add New Product</h4>
+
+  <form #productForm="ngForm" (ngSubmit)="addProduct()">
+    <!-- Category -->
+    <div class="row g-3 mb-3">
+      <div class="col-md-6">
+        <label class="form-label fw-semibold">Category</label>
+        <select
+          [(ngModel)]="selectedCategory"
+          name="category"
+          class="form-select"
+          required
+        >
+          <option *ngFor="let c of categories" [ngValue]="c.categoryId">
+            {{ c.categoryName }}
+          </option>
+          <option [ngValue]="'other'">Other</option>
+        </select>
+        <div *ngIf="selectedCategory === 'other'" class="mt-2">
+          <input
+            type="text"
+            [(ngModel)]="newCategoryName"
+            name="newCategoryName"
+            class="form-control"
+            placeholder="Enter new category name"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <label class="form-label fw-semibold">Title</label>
+        <input
+          type="text"
+          [(ngModel)]="newProduct.title"
+          name="title"
+          class="form-control"
+          required
+        />
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Description</label>
+      <textarea
+        [(ngModel)]="newProduct.description"
+        name="description"
+        class="form-control"
+        rows="3"
+      ></textarea>
+    </div>
+
+    <!-- Price, Quantity, Active -->
+    <div class="row g-3 mb-3">
+      <div class="col-md-4">
+        <label class="form-label fw-semibold">Price</label>
+        <input
+          type="number"
+          [(ngModel)]="newProduct.price"
+          name="price"
+          class="form-control"
+          required
+          min="1"
+        />
+      </div>
+      <div class="col-md-4">
+        <label class="form-label fw-semibold">Quantity</label>
+        <input
+          type="number"
+          [(ngModel)]="newProduct.quantity"
+          name="quantity"
+          class="form-control"
+          required
+          min="0"
+        />
+      </div>
+      <div class="col-md-4 d-flex align-items-center">
+        <label class="form-label fw-semibold me-2">{{newProduct.isActive?'Active':'Inactive'}}</label>
+        <div class="form-check form-switch">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            [(ngModel)]="newProduct.isActive"
+            name="isActive"
+            
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Image Upload -->
+    <div class="mb-4">
+      <label class="form-label fw-semibold">Images</label>
+      <input
+        type="file"
+        multiple
+        (change)="onFileSelected($event)"
+        class="form-control"
+        #selectFile
+      />
+
+      <!-- Image Preview -->
+      <div class="d-flex gap-2 mt-2 mb-2" *ngIf="newProduct.productImg?.length">
+        <img
+          *ngFor="let img of newProduct.productImg"
+          [src]="img.url"
+          class="img-preview"
+        />
+      </div>
+    </div>
+
+    <button
+      id="savedProductBtn"
+      class="btn btn-success px-5 py-2"
+      type="submit"
+    >
+      <i class="bi bi-plus-circle"></i> Save
+    </button>
+  </form>
+</div>
+
+<!-- Toast -->
+<div class="toast-container p-3">
+  <div
+    id="liveToast"
+    class="toast align-items-center text-white border-0"
+    [ngClass]="{
+      'bg-success': toastType === 'success',
+      'bg-danger': toastType === 'danger',
+      'bg-info': toastType === 'info'
+    }"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  >
+    <div class="d-flex">
+      <div class="toast-body">
+        <i
+          class="bi"
+          [ngClass]="{
+            'bi-check-circle-fill': toastType === 'success',
+            'bi-exclamation-triangle-fill': toastType === 'danger',
+            'bi-info-circle-fill': toastType === 'info'
+          }"
+        ></i>
+        {{ toastMsg }}
+      </div>
+      <button
+        type="button"
+        class="btn-close btn-close-white me-2 m-auto"
+        data-bs-dismiss="toast"
+        aria-label="Close"
+      ></button>
+    </div>
+  </div>
+</div>

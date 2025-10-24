@@ -1,0 +1,58 @@
+:host {
+  display: block;
+  margin-top: 80px;
+  margin-bottom: 50px;
+}
+
+/* Container */
+.search-container {
+  background: #ffffff;
+  border: 1px solid #e2e6ea;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.search-container:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(90deg, #007bff, #0056b3);
+  border: none;
+  transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, #0056b3, #004095);
+}
+
+.btn-success {
+  background: linear-gradient(90deg, #28a745, #1e7e34);
+  border: none;
+  transition: 0.3s ease;
+}
+
+.btn-danger {
+  background: linear-gradient(90deg, #dc3545, #b02a37);
+  border: none;
+  transition: 0.3s ease;
+}
+
+/* Inputs and Selects */
+input.form-control,
+select.form-select {
+  border: 1px solid #dee2e6;
+  transition: 0.3s ease;
+}
+
+input.form-control:focus,
+select.form-select:focus {
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+  border-color: #007bff;
+}
+
+/* Icons */
+.input-group-text i {
+  font-size: 1.2rem;
+}

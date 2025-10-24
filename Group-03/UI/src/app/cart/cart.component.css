@@ -1,0 +1,70 @@
+/* spacing because navbar may overlap */
+:host {
+  display: block;
+  margin-top: 100px;
+}
+
+/* Row hover */
+.cart-row:hover {
+  background-color: #f9fafb;
+  transition: background-color 0.15s ease-in-out;
+}
+
+/* Image wrapper to avoid cropping */
+.cart-img-wrapper {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  overflow: hidden; /* ok with object-fit: contain */
+  box-sizing: border-box;
+}
+
+.cart-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* important — show entire image */
+  display: block;
+}
+
+/* make the qty input narrow and consistent */
+.qty-input {
+  width: 50px;
+  padding: 0.25rem 0.35rem;
+}
+
+/* responsive tweak */
+@media (max-width: 480px) {
+  .cart-img-wrapper {
+    width: 56px;
+    height: 56px;
+  }
+  .qty-input {
+    width: 44px;
+  }
+}
+
+.toast-container {
+  max-width: 340px;
+}
+
+.toast {
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.toast.ng-leave-active {
+  opacity: 0;
+}
+
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  10%, 90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+

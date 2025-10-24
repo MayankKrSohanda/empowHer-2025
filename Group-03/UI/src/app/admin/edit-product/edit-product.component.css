@@ -1,0 +1,51 @@
+.image-preview {
+  border-radius: 0.5rem;
+  border: 1px solid #dee2e6;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: 120px;
+  height: 120px;
+  
+  overflow: hidden;
+  background-color: #fff;
+  /* padding: 4px; */
+  position: relative;
+  transition: transform 0.2s;
+}
+
+.image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding:4px;
+}
+
+.image-preview .btn-close {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background-color: rgba(255, 255, 255, 0.8); /* white translucent bg */
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  opacity: 1; /* always visible */
+  transition: background-color 0.2s, transform 0.2s;
+}
+.image-preview .btn-close:hover {
+  background-color: rgba(255, 0, 0, 0.8);
+  transform: scale(1.1);
+}
+@media (max-width: 768px) {
+  .image-preview {
+    width: 100px;
+    height: 100px;
+  }
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.cursor-pointer:hover {
+  color: darkred;
+}

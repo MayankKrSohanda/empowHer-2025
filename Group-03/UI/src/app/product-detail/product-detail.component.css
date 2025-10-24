@@ -1,0 +1,67 @@
+/* Toast */
+.product-toast {
+  min-width: 260px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.product-toast .toast-body {
+  padding: .8rem 1rem;
+  font-weight: 600;
+}
+.product-toast .toast-text {
+  font-size: 0.95rem;
+  line-height: 1.1;
+}
+
+/* CTA Button (primary) */
+.primary-cta {
+  background: linear-gradient(135deg, #00C9A7, #00C6FF);
+  border: none;
+  color: #fff;
+  border-radius: 12px;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(0, 198, 255, 0.12);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.primary-cta:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px rgba(0, 198, 255, 0.16);
+}
+.primary-cta:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Quantity dropdown */
+.quantity-dropdown {
+  min-width: 110px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(24, 24, 24, 0.06);
+}
+
+/* Badge styling (slightly larger) */
+.badge {
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: .5rem .7rem;
+  border-radius: 10px;
+}
+
+/* Image container polish */
+.product-image-wrapper {
+  border-radius: 12px;
+  background: linear-gradient(180deg, #fbfdff, #f1f9ff);
+  padding: 16px;
+  box-shadow: 0 6px 20px rgba(13, 71, 161, 0.04);
+}
+.product-image {
+  border-radius: 8px;
+  max-height: 420px;
+  object-fit: contain;
+}
+
+/* Small responsive tweak */
+@media (max-width: 767px) {
+  .product-image { max-height: 280px; }
+  .product-toast { min-width: 200px; }
+}

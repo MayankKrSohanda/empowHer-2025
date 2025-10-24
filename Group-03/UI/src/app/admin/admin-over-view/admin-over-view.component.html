@@ -1,0 +1,26 @@
+<div class="container py-4">
+  <h3 class="text-primary mb-4 fw-bold">Admin Overview</h3>
+
+  <!-- Summary Cards -->
+  <div class="row g-3">
+    <div class="col-md-6  col-lg-3" *ngFor="let card of summaryCards">
+      <div
+        class="card shadow-sm stats-card p-3 d-flex flex-row align-items-center"
+      >
+        <div class="icon-container me-3" [ngClass]="card.bg">
+          <i class="bi" [ngClass]="card.icon"></i>
+        </div>
+        <div>
+          <h5 class="mb-0">{{ card.value }}</h5>
+          <small class="text-muted">{{ card.label }}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Revenue Chart -->
+  <div class="card shadow-sm mt-4 p-4 chart-card">
+    <h5 class="fw-semibold mb-4">Monthly Revenue Overview</h5>
+    <canvas id="revenueChart"></canvas>
+  </div>
+</div>

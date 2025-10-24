@@ -1,0 +1,159 @@
+<div class="container my-5">
+  <!-- Page Header -->
+  <div class="d-flex align-items-center justify-content-between mb-4">
+    <h2 class="text-primary fw-bold">
+      <i class="bi bi-card-checklist me-2"></i> All Orders
+    </h2>
+    <!-- <button class="btn btn-outline-primary" (click)="refreshOrders()">
+      <i class="bi bi-arrow-clockwise me-1"></i> Refresh
+    </button> -->
+  </div>
+
+  <!-- Loading Spinner -->
+  <div *ngIf="loading" class="text-center my-5">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
+
+  <!-- Orders Table -->
+  <div
+    *ngIf="!loading && orders.length > 0"
+    class="table-responsive shadow rounded-4 border"
+  >
+    <table class="table table-hover align-middle mb-0 bg-white">
+      <thead class="table-light text-center">
+        <tr>
+          <th>#</th>
+          <th>Order ID</th>
+          <th>User ID</th>
+          <th>Payment Status</th>
+          <th>Order Status</th>
+          <th>Total Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let order of orders; let i = index">
+          <!-- Main Order Row -->
+          <tr class="text-center align-middle">
+            <td>{{ i + 1 }}</td>
+            <td class="text-truncate" style="max-width: 120px">
+              {{ order.orderId }}
+            </td>
+            <td>{{ order.userId }}</td>
+
+            <!-- Payment Status Buttons -->
+            <td>
+              <div class="d-flex gap-1 justify-content-center flex-wrap">
+                <button
+                  *ngFor="let status of ['PENDING', 'PAID', 'FAILED']"
+                  class="btn btn-sm status-btn"
+                  [ngClass]="{
+                    'btn-success': order.paymentStatus === status,
+                    'btn-outline-secondary': order.paymentStatus !== status
+                  }"
+                  (click)="updatePaymentStatus(order, status)"
+                >
+                  {{ status }}
+                </button>
+              </div>
+            </td>
+
+            <!-- Order Status Buttons -->
+            <td>
+              <div class="d-flex gap-1 justify-content-center flex-wrap">
+                <button
+                  *ngFor="
+                    let status of [
+                      'PLACED',
+                      'PROCESSING',
+                      'SHIPPED',
+                      'DELIVERED',
+                      'CANCELLED'
+                    ]
+                  "
+                  class="btn btn-sm status-btn"
+                  [ngClass]="{
+                    'btn-primary':
+                      order.orderStatus === status && status !== 'CANCELLED',
+                    'btn-danger':
+                      status === 'CANCELLED' && order.orderStatus === status,
+                    'btn-outline-secondary': order.orderStatus !== status
+                  }"
+                  (click)="updateOrderStatus(order, status)"
+                >
+                  {{ status }}
+                </button>
+              </div>
+            </td>
+
+            <td>{{ order.totalPrice | currency : "INR" }}</td>
+
+            <!-- Actions -->
+            <td class="d-flex justify-content-center gap-1">
+              <button
+                class="btn btn-sm btn-outline-info"
+                (click)="viewOrderDetails(order)"
+                title="View Details"
+              >
+                <i class="bi bi-eye"></i>
+              </button>
+            </td>
+          </tr>
+
+          <!-- Expanded Details Row -->
+          <tr *ngIf="order.showDetails">
+            <td colspan="7">
+              <ul class="list-unstyled mb-2">
+                <li
+                  *ngFor="let item of order.items"
+                  class="d-flex justify-content-between border-bottom py-1"
+                >
+                  <span>
+                    {{ item.productTitle || "Product " + item.productId }} |
+                    {{ item.quantity }}</span
+                  >
+                  <span>{{
+                    item.price * item.quantity | currency : "INR"
+                  }}</span>
+                </li>
+              </ul>
+              <p class="mb-1">
+                <strong>Delivery:</strong> {{ order.deliveryAddress }} |
+                <strong>Phone:</strong> {{ order.phoNo }}
+              </p>
+              <p class="mb-0">
+                <strong>Payment Method:</strong> {{ order.paymentMethod }}
+              </p>
+            </td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- No Orders -->
+  <div *ngIf="!loading && orders.length === 0" class="text-center my-5">
+    <i class="bi bi-exclamation-circle fs-2 text-muted"></i>
+    <p class="text-muted mt-2">No orders found.</p>
+  </div>
+</div>
+
+<!-- Bootstrap Toast -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1055">
+  <div
+    #toastEl
+    class="toast align-items-center text-white bg-primary border-0"
+    role="alert"
+  >
+    <div class="d-flex">
+      <div class="toast-body">{{ toastMessage }}</div>
+      <button
+        type="button"
+        class="btn-close btn-close-white me-2 m-auto"
+        (click)="toastInstance.hide()"
+      ></button>
+    </div>
+  </div>
+</div>

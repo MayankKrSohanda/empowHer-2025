@@ -1,0 +1,46 @@
+:host {
+  display: block;
+  margin-top: 100px;
+}
+
+/* Toast styling */
+.toast-container {
+  z-index: 1055;
+}
+
+/* .toast {
+  min-width: 280px;
+  font-weight: 500;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+} */
+ .toast {
+  animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+
+/* Button responsiveness */
+@media (max-width: 480px) {
+  .card-footer .btn {
+    width: 100%;
+    padding: 0.5rem 1rem;
+  }
+}

@@ -1,0 +1,16 @@
+/* Reduce button size and spacing */
+.status-btn {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  min-width: 70px;
+}
+
+/* Toast transition */
+.toast {
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Optional: alternate row hover */
+.table-hover tbody tr:hover {
+  background-color: #f8f9fa;
+}

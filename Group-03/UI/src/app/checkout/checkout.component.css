@@ -1,0 +1,42 @@
+:host {
+  display: block;
+  margin-top: 100px;
+}
+.checkout-wrapper {
+  max-width: 600px;
+  width: 100%;
+}
+
+.card {
+  border-radius: 1rem;
+}
+
+.card-body {
+  background-color: #fafafa;
+}
+
+.btn-warning {
+  background-color: #ffcc00;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-warning:hover {
+  background-color: #f7b500;
+  transform: scale(1.02);
+}
+
+textarea.form-control,
+input.form-control,
+select.form-select {
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  transition: all 0.2s ease;
+}
+
+textarea.form-control:focus,
+input.form-control:focus,
+select.form-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}

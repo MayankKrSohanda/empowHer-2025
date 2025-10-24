@@ -1,0 +1,115 @@
+<div class="container my-5 d-flex justify-content-center">
+  <div class="checkout-wrapper col-lg-7 col-md-9 col-sm-12">
+    <h2 class="text-center fw-bold mb-4 text-primary">Checkout</h2>
+
+    <form #checkoutForm="ngForm" class="card shadow-lg border-0">
+      <div class="card-header bg-light text-center py-3">
+        <h5 class="mb-0 text-dark fw-semibold">
+          <i class="bi bi-truck me-2"></i>Delivery Information
+        </h5>
+      </div>
+
+      <div class="card-body p-4">
+        <!-- Delivery Address -->
+        <div class="mb-3">
+          <label for="address" class="form-label fw-semibold">Delivery Address</label>
+          <textarea
+            id="address"
+            class="form-control"
+            rows="2"
+            required
+            [(ngModel)]="address"
+            name="address"
+            placeholder="Enter your full delivery address"
+          ></textarea>
+        </div>
+
+        <!-- Phone -->
+        <div class="mb-3">
+          <label for="phone" class="form-label fw-semibold">Phone Number</label>
+          <input
+            type="text"
+            id="phone"
+            class="form-control"
+            required
+            [(ngModel)]="phone"
+            name="phone"
+            placeholder="10-digit mobile number"
+          />
+        </div>
+
+        <!-- Payment Options -->
+        <div class="mb-3">
+          <label class="form-label fw-bold">Select Payment Method</label>
+          <select
+            class="form-select"
+            [(ngModel)]="paymentMethod"
+            name="paymentMethod"
+            required
+          >
+            <option value="" disabled selected>Select payment method</option>
+            <option *ngFor="let option of paymentOptions" [value]="option">
+              {{ option }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Card Details -->
+        <div *ngIf="paymentMethod === 'Card'" class="animate__animated animate__fadeIn">
+          <div class="mb-3">
+            <label class="form-label">Card Number</label>
+            <input
+              type="text"
+              class="form-control"
+              maxlength="16"
+              placeholder="1234 5678 9012 3456"
+              [(ngModel)]="cardNumber"
+              name="cardNumber"
+            />
+          </div>
+          <div class="d-flex mb-3">
+            <input
+              type="text"
+              class="form-control me-2"
+              maxlength="5"
+              placeholder="MM/YY"
+              [(ngModel)]="expiry"
+              name="expiry"
+            />
+            <input
+              type="text"
+              class="form-control"
+              maxlength="4"
+              placeholder="CVV"
+              [(ngModel)]="cvv"
+              name="cvv"
+            />
+          </div>
+        </div>
+
+        <!-- Order Notes -->
+        <div class="mb-3 mt-4">
+          <label for="notes" class="form-label fw-semibold">Order Notes (Optional)</label>
+          <textarea
+            id="notes"
+            class="form-control"
+            rows="2"
+            [(ngModel)]="orderNotes"
+            name="orderNotes"
+            placeholder="Add any delivery instructions"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="card-footer bg-light text-center py-3">
+        <button
+          class="btn btn-warning w-100 py-2 fw-bold text-dark"
+          type="button"
+          (click)="continueToReview()"
+        >
+          <i class="bi bi-arrow-right-circle me-1"></i> Continue
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,172 @@
+<!-- signup.component.html -->
+<div
+  class="d-flex justify-content-center align-items-center vh-100"
+  style="background: linear-gradient(135deg, #fdfbfb, #ebedee)"
+>
+  <div
+    class="card shadow-lg p-5 rounded-5 border-0"
+    style="width: 450px; background-color: #ffffffcc"
+  >
+    <h2 class="text-center text-primary mb-4 fw-bold">Create Account</h2>
+
+    <form [formGroup]="signupForm" (ngSubmit)="handleSignup()" novalidate>
+      <!-- Name -->
+      <div class="mb-3">
+        <label for="name" class="form-label fw-semibold">Full Name</label>
+        <input
+          type="text"
+          id="name"
+          formControlName="name"
+          class="form-control form-control-lg shadow-sm"
+          placeholder="Enter your name"
+        />
+        <div
+          *ngIf="f['name'].touched && f['name'].invalid"
+          class="text-danger small mt-1"
+        >
+          <div *ngIf="f['name'].errors?.['required']">Name is required.</div>
+          <div *ngIf="f['name'].errors?.['minlength']">
+            Name must be at least 3 characters.
+          </div>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label for="email" class="form-label fw-semibold">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="form-control form-control-lg shadow-sm"
+          placeholder="Enter your email"
+        />
+        <div
+          *ngIf="f['email'].touched && f['email'].invalid"
+          class="text-danger small mt-1"
+        >
+          <div *ngIf="f['email'].errors?.['required']">Email is required.</div>
+          <div *ngIf="f['email'].errors?.['email']">Enter a valid email.</div>
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3 position-relative">
+        <label for="password" class="form-label fw-semibold">Password</label>
+        <input
+          [type]="passwordVisible ? 'text' : 'password'"
+          id="password"
+          formControlName="password"
+          class="form-control form-control-lg shadow-sm"
+          placeholder="Enter your password"
+        />
+        <i
+          class="bi"
+          [ngClass]="passwordVisible ? 'bi-eye-slash-fill' : 'bi-eye-fill'"
+          (click)="togglePassword('password')"
+          title="show/Hide password"
+        ></i>
+
+        <div
+          *ngIf="f['password'].touched && f['password'].invalid"
+          class="text-danger small mt-1"
+        >
+          <div
+            *ngIf="f['password'].touched && f['password'].errors?.['required']"
+            class="text-danger small mt-1"
+          >
+            Password is required.
+          </div>
+
+          <div *ngIf="f['password'].errors?.['minlength']">
+            Must be at least 6 characters.
+          </div>
+          <div *ngIf="f['password'].errors?.['pattern']">
+            Must contain uppercase letter & special character.
+          </div>
+        </div>
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="mb-3 position-relative">
+        <label for="confirmPassword" class="form-label">Confirm Password</label>
+        <input
+          [type]="confirmPasswordVisible ? 'text' : 'password'"
+          id="confirmPassword"
+          formControlName="confirmPassword"
+          class="form-control"
+          placeholder="Re-enter your password"
+          (blur)="onConfirmPasswordBlur()"
+        />
+        <i
+          class="bi"
+          [ngClass]="
+            confirmPasswordVisible ? 'bi-eye-slash-fill' : 'bi-eye-fill'
+          "
+          (click)="togglePassword('confirm')"
+          title="show/Hide password"
+        ></i>
+        <!-- Required Error -->
+        <div
+          *ngIf="f['confirmPassword'].touched && f['confirmPassword'].errors?.['required']"
+          class="text-danger small mt-1"
+        >
+          Confirm Password is required.
+        </div>
+
+        <!-- Password Mismatch Error (only when both are filled and mismatch) -->
+        <div *ngIf="showPasswordMismatch" class="text-danger small mt-1">
+          Passwords do not match.
+        </div>
+      </div>
+
+      <!-- Alert messages -->
+      <div
+        *ngIf="signupSuccess"
+        class="alert alert-success alert-dismissible fade show shadow-sm"
+        role="alert"
+      >
+        {{ signupSuccess }}
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="signupSuccess = ''"
+        ></button>
+      </div>
+
+      <div
+        *ngIf="signupError"
+        class="alert alert-danger alert-dismissible fade show shadow-sm"
+        role="alert"
+      >
+        {{ signupError }}
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="signupError = ''"
+        ></button>
+      </div>
+
+      <!-- Submit button -->
+      <div class="d-grid mb-3">
+        <button
+          type="submit"
+          class="btn btn-success btn-lg fw-semibold shadow-sm"
+        >
+          Sign Up
+        </button>
+      </div>
+
+      <p class="text-center text-muted small">
+        Already have an account?
+        <a
+          routerLink="/login"
+          class="text-decoration-none text-primary fw-semibold"
+          >Login</a
+        >
+      </p>
+    </form>
+  </div>
+</div>

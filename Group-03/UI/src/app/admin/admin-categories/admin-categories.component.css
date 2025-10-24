@@ -1,0 +1,14 @@
+/* Table spacing */
+.table td, .table th {
+  vertical-align: middle;
+}
+
+/* Form input and button spacing */
+form input.form-control {
+  max-width: 300px;
+}
+
+/* Toast custom width */
+.toast {
+  min-width: 250px;
+}

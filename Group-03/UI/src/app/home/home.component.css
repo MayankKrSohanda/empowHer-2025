@@ -1,0 +1,8 @@
+p {
+  font-size: large;
+  font-weight: 400;
+}
+.app-card-wrapper {
+  padding: 0 10px; /* horizontal padding to each card */
+}
+

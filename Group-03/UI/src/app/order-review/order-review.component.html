@@ -1,0 +1,100 @@
+<div class="container my-5">
+  <h2 class="text-center fw-bold mb-4 text-primary">Review Your Order</h2>
+
+  <div class="row g-4">
+    <!-- Cart Summary -->
+    <div class="col-lg-6">
+      <div class="card shadow-lg border-0">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0">Your Order</h5>
+        </div>
+        <div class="card-body">
+          <ul class="list-group mb-3">
+            <li
+              class="list-group-item d-flex justify-content-between align-items-center"
+              *ngFor="let item of cartItems"
+            >
+              <div>
+                <span class="fw-bold">{{ item.productTitle }}</span>
+                <small class="text-muted d-block">
+                  Qty: {{ item.quantity || 1 }}
+                </small>
+              </div>
+              <span class="fw-bold text-success">
+                ${{ item.productPrice * (item.quantity || 1) }}
+              </span>
+            </li>
+          </ul>
+
+          <div class="d-flex justify-content-between mb-2">
+            <span class="fw-bold">Total:</span>
+            <span class="fw-bold text-success h5">${{ totalAmount }}</span>
+          </div>
+
+          <small class="text-muted">
+            <i class="bi bi-truck"></i> Estimated Delivery: {{ estimatedDelivery }}
+          </small>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delivery & Payment Info -->
+    <div class="col-lg-6">
+      <div class="card shadow-lg border-0">
+        <div class="card-header bg-light">
+          <h5 class="mb-0">Delivery & Payment Information</h5>
+        </div>
+        <div class="card-body">
+          <p><strong>Address:</strong> {{ address }}</p>
+          <p><strong>Phone:</strong> {{ phone }}</p>
+          <p><strong>Order Notes:</strong> {{ orderNotes }}</p>
+          <p><strong>Payment Method:</strong> {{ paymentMethod }}</p>
+          <p *ngIf="paymentMethod === 'Card'">
+            <strong>Card Number:</strong>
+            {{ maskCardNumber(cardDetails?.cardNumber || '') }}
+          </p>
+        </div>
+
+        <div class="card-footer text-end bg-light">
+          <button
+            class="btn btn-success w-100 py-2 fw-bold"
+            (click)="placeOrPay()"
+            [disabled]="isProcessingPayment || toastVisible"
+          >
+            <span *ngIf="!isProcessingPayment">
+              {{ paymentMethod === 'Cash on Delivery' ? 'Place Order' : 'Pay Now' }}
+            </span>
+            <span *ngIf="isProcessingPayment">
+              <span class="spinner-border spinner-border-sm me-2"></span>
+              Processing...
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Notification -->
+<div
+  class="toast-container position-fixed bottom-0 end-0 p-3"
+  *ngIf="toastVisible"
+>
+  <div
+    class="toast align-items-center text-white border-0 show"
+    [ngClass]="{
+      'bg-success': toastType === 'success',
+      'bg-danger': toastType === 'error'
+    }"
+    role="alert"
+  >
+    <div class="d-flex">
+      <div class="toast-body">{{ toastMessage }}</div>
+      <button
+        type="button"
+        class="btn-close btn-close-white me-2 m-auto"
+        (click)="toastVisible = false"
+      ></button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+.stats-card {
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.stats-card:hover {
+  transform: scale(1.03);
+}
+
+.icon-container {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.4rem;
+  border-radius: 10px;
+}
+
+.chart-card {
+  /* min-height: 400px; */
+  min-height: 300px; /* reduce from 400px */
+  max-height: 350px;
+  padding: 1.5rem;
+}
+.bg-danger {
+  background-color: #dc3545 !important;
+}
+#revenueChart {
+  height: 240px !important; /* force height */
+  max-height: 240px;
+}

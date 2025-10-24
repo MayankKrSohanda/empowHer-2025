@@ -1,0 +1,39 @@
+<div class="container my-3">
+  <!-- Alert at the top -->
+  <div
+    *ngIf="alertMsg"
+    class="position-fixed top-0 start-50 translate-middle-x mt-3 w-auto"
+    style="z-index: 1050"
+  >
+    <div
+      class="alert alert-{{ alertType }} alert-dismissible fade show shadow"
+      role="alert"
+    >
+      {{ alertMsg }}
+      <button
+        type="button"
+        class="btn-close"
+        aria-label="Close"
+        (click)="alertMsg = ''"
+      ></button>
+    </div>
+  </div>
+
+  <!-- Search Component -->
+  <app-search (searchEvent)="onSearch($event)"></app-search>
+
+  <!-- Products Grid -->
+  <div class="row gx-4 gy-4">
+    <div
+      class="col-lg-3 col-md-4 col-sm-6 mb-3"
+      *ngFor="let product of filteredProducts"
+    >
+      <app-card
+        [product]="product"
+        (viewDetails)="onViewDetails($event)"
+        (notify)="onCardNotify($event)"
+      >
+      </app-card>
+    </div>
+  </div>
+</div>

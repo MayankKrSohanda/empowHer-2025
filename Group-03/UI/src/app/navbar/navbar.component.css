@@ -1,0 +1,38 @@
+body {
+  padding-top: 70px;
+}
+.dropdown {
+  margin-right: 1rem;
+}
+.custom-navbar {
+  background: linear-gradient(to right, #00cfff, #005377);
+  color: #ffffff;
+}
+.btn-outline-info {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-outline-info:hover {
+  background-color: #00cfff;
+  color: white;
+}
+.navbar {
+  padding: 0.8rem 1rem;
+}
+
+.navbar-brand {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.navbar .btn-outline-light {
+  transition: all 0.3s ease;
+}
+
+.navbar .btn-outline-light:hover {
+  background-color: #ffffff;
+  color: #0d6efd;
+}
+

@@ -1,0 +1,30 @@
+:host {
+  display: block;
+  margin-top: 100px;
+}
+.card-header .badge {
+  font-size: 0.85rem;
+  padding: 0.5em 0.75em;
+}
+
+.table th,
+.table td {
+  vertical-align: middle;
+}
+
+.btn-outline-info {
+  transition: all 0.3s ease;
+}
+
+.btn-outline-info:hover {
+  background-color: #0dcaf0;
+  color: white;
+}
+
+.card {
+  border-radius: 0.75rem;
+}
+
+.card-body {
+  font-size: 0.95rem;
+}

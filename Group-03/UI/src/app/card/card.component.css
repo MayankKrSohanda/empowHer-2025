@@ -1,0 +1,41 @@
+/* Card size */
+.card-sm {
+  min-height: 200px;
+}
+
+/* Product image */
+.product-img {
+  height: 200px;
+  width: 100%;
+  object-fit: contain; /* show full image without cropping */
+  background-color: #f5f5f5; /* optional placeholder bg */
+  border-radius: 0.5rem; /* rounded corners */
+  transition: transform 0.3s ease; /* smooth hover if needed */
+}
+
+/* Button styling */
+.btn-primary {
+  background: linear-gradient(135deg, #00C9A7, #00C6FF);
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Card hover effect */
+.card-hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.card-hover-lift:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  position: relative;
+}

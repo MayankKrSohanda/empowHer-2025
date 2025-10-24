@@ -1,0 +1,68 @@
+<div class="container search-container py-4 px-4 shadow-sm rounded-4 bg-light">
+  <!-- Row 1: Search bar -->
+  <div class="row mb-3 justify-content-center">
+    <div class="col-md-8">
+      <div class="input-group shadow-sm rounded-pill overflow-hidden">
+        <span class="input-group-text bg-white border-0 ps-3">
+          <i class="bi bi-search text-primary"></i>
+        </span>
+        <input
+          type="text"
+          class="form-control border-0"
+          placeholder="Search products..."
+          [(ngModel)]="title"
+          name="title"
+          #searchInput
+        />
+        <button class="btn btn-primary px-4" (click)="onSearch()">
+          <i class="bi bi-arrow-right-circle me-1"></i> Search
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2: Filters -->
+  <div class="row gy-3 align-items-center justify-content-center">
+    <!-- Category dropdown -->
+    <div class="col-md-3 col-sm-6">
+      <select class="form-select rounded-pill shadow-sm" [(ngModel)]="categoryId" name="categoryId"  [disabled]="!categories.length">
+        <option [ngValue]="null">All categories</option>
+        <option *ngFor="let cat of categories" [ngValue]="cat.categoryId">
+          {{ cat.categoryName }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Min price -->
+    <div class="col-md-2 col-sm-6">
+      <input
+        type="number"
+        class="form-control rounded-pill shadow-sm"
+        placeholder="Min Price"
+        [(ngModel)]="minPrice"
+        name="minPrice"
+      />
+    </div>
+
+    <!-- Max price -->
+    <div class="col-md-2 col-sm-6">
+      <input
+        type="number"
+        class="form-control rounded-pill shadow-sm"
+        placeholder="Max Price"
+        [(ngModel)]="maxPrice"
+        name="maxPrice"
+      />
+    </div>
+
+    <!-- Buttons -->
+    <div class="col-md-3 col-sm-6 d-flex justify-content-center">
+      <button class="btn btn-success me-2 w-50 rounded-pill shadow-sm" (click)="onFilter()">
+        <i class="bi bi-funnel-fill me-1"></i> Filter
+      </button>
+      <button class="btn btn-danger w-50 rounded-pill shadow-sm" (click)="onReset()">
+        <i class="bi bi-arrow-counterclockwise me-1"></i> Reset
+      </button>
+    </div>
+  </div>
+</div>

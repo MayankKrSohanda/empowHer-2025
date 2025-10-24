@@ -1,0 +1,193 @@
+<!-- <div class="login-page">
+
+  
+  <section class="hero-section text-center text-white d-flex flex-column justify-content-center align-items-center">
+    <h1 class="display-4 fw-bold mb-3">Welcome to ShopEase</h1>
+    <p class="lead mb-4 px-3 px-md-5">
+      Discover thousands of products, exclusive deals, and the best online shopping experience. Login to continue shopping!
+    </p>
+    <img src="assets/login-hero.png" alt="Shopping Illustration" class="hero-img mb-4" />
+  </section>
+
+ 
+  <section class="d-flex justify-content-center align-items-center py-5 bg-light">
+    <div
+      class="card shadow-lg p-5 rounded-5 border-0 login-card"
+    >
+      <h2 class="text-center text-primary mb-4 fw-bold">Login</h2>
+
+     
+      <form [formGroup]="loginForm" (ngSubmit)="handleLogin()" novalidate>
+       
+        <div class="mb-3">
+          <label for="email" class="form-label fw-semibold">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            formControlName="email"
+            class="form-control form-control-lg shadow-sm"
+            placeholder="Enter your email"
+          />
+          <div
+            *ngIf="f['email'].touched && f['email'].invalid"
+            class="text-danger small mt-1"
+          >
+            <div *ngIf="f['email'].errors?.['required']">Email is required.</div>
+            <div *ngIf="f['email'].errors?.['email']">Enter a valid email.</div>
+          </div>
+        </div>
+
+        
+        <div class="mb-4">
+          <label for="password" class="form-label fw-semibold">Password</label>
+          <input
+            type="password"
+            id="password"
+            formControlName="password"
+            class="form-control form-control-lg shadow-sm"
+            placeholder="Enter your password"
+          />
+          <div
+            *ngIf="f['password'].touched && f['password'].invalid"
+            class="text-danger small mt-1"
+          >
+            <div *ngIf="f['password'].errors?.['required']">
+              Password is required.
+            </div>
+            <div *ngIf="f['password'].errors?.['minlength']">
+              Password must be at least 6 characters.
+            </div>
+            <div *ngIf="f['password'].errors?.['pattern']">
+              Must include uppercase letter & special character.
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="d-grid mb-3">
+          <button type="submit" class="btn btn-hover-gradient btn-lg fw-semibold">
+            Login
+          </button>
+        </div>
+
+        <p class="text-center text-muted small">
+          Don't have an account?
+          <a routerLink="/sign-up" class="text-decoration-none text-primary fw-semibold">Sign Up</a>
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <div class="alerts-container position-fixed top-0 start-50 translate-middle-x w-50 mt-3">
+    <div *ngIf="loginSuccess" class="alert alert-success alert-dismissible fade show shadow-lg" role="alert">
+      {{ loginSuccess }}
+      <button type="button" class="btn-close" aria-label="Close" (click)="loginSuccess = ''"></button>
+    </div>
+    <div *ngIf="loginError" class="alert alert-danger alert-dismissible fade show shadow-lg" role="alert">
+      {{ loginError }}
+      <button type="button" class="btn-close" aria-label="Close" (click)="loginError = ''"></button>
+    </div>
+  </div>
+</div> -->
+<div class="login-page">
+
+  <!-- Hero Carousel Section -->
+  <section class="hero-carousel position-relative">
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="carousel-content text-center text-white">
+            <h1 class="display-4 fw-bold mb-2">Welcome to ShopEase</h1>
+            <p class="lead mb-3">Find the best deals on electronics, fashion, and more.</p>
+            <img src="assets\bag.webp" class="hero-img" alt="Slide 1">
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-content text-center text-white">
+            <h1 class="display-4 fw-bold mb-2">Exclusive Offers</h1>
+            <p class="lead mb-3">Sign in and enjoy daily discounts on top products!</p>
+            <img src="assets\hero2.png" class="hero-img" alt="Slide 2">
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="carousel-content text-center text-white">
+            <h1 class="display-4 fw-bold mb-2">Fast Delivery</h1>
+            <p class="lead mb-3">Get your products delivered at lightning speed.</p>
+            <img src="assets\hero3.jpg" class="hero-img" alt="Slide 3">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Optional carousel controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </section>
+
+  <!-- Login Card Section -->
+  <section class="d-flex justify-content-center align-items-center py-5 bg-light">
+    <div class="card shadow-lg p-5 rounded-5 border-0 login-card">
+      <h2 class="text-center text-primary mb-4 fw-bold">Login</h2>
+
+      <form [formGroup]="loginForm" (ngSubmit)="handleLogin()" novalidate>
+        <!-- Email -->
+        <div class="mb-3">
+          <label for="email" class="form-label fw-semibold">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            formControlName="email"
+            class="form-control form-control-lg shadow-sm"
+            placeholder="Enter your email"
+          />
+          <div *ngIf="f['email'].touched && f['email'].invalid" class="text-danger small mt-1">
+            <div *ngIf="f['email'].errors?.['required']">Email is required.</div>
+            <div *ngIf="f['email'].errors?.['email']">Enter a valid email.</div>
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="mb-4">
+          <label for="password" class="form-label fw-semibold">Password</label>
+          <input
+            type="password"
+            id="password"
+            formControlName="password"
+            class="form-control form-control-lg shadow-sm"
+            placeholder="Enter your password"
+          />
+          <div *ngIf="f['password'].touched && f['password'].invalid" class="text-danger small mt-1">
+            <div *ngIf="f['password'].errors?.['required']">Password is required.</div>
+            <div *ngIf="f['password'].errors?.['minlength']">Password must be at least 6 characters.</div>
+            <div *ngIf="f['password'].errors?.['pattern']">Must include uppercase letter & special character.</div>
+          </div>
+        </div>
+
+        <!-- Login Button -->
+        <div class="d-grid mb-3">
+          <button type="submit" class="btn btn-hover-gradient btn-lg fw-semibold">Login</button>
+        </div>
+
+        <p class="text-center text-muted small">
+          Don't have an account?
+          <a routerLink="/sign-up" class="text-decoration-none text-primary fw-semibold">Sign Up</a>
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Alerts -->
+  <div class="alerts-container position-fixed top-0 start-50 translate-middle-x w-50 mt-3">
+    <div *ngIf="loginSuccess" class="alert alert-success alert-dismissible fade show shadow-lg" role="alert">
+      {{ loginSuccess }}
+      <button type="button" class="btn-close" aria-label="Close" (click)="loginSuccess = ''"></button>
+    </div>
+    <div *ngIf="loginError" class="alert alert-danger alert-dismissible fade show shadow-lg" role="alert">
+      {{ loginError }}
+      <button type="button" class="btn-close" aria-label="Close" (click)="loginError = ''"></button>
+    </div>
+  </div>
+</div>
