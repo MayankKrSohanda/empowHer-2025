@@ -1,0 +1,108 @@
+.product-detail-card{
+    width:1000px !important;
+}
+.my-prod{
+    margin-top:100px;
+}
+.product-container {
+  display: flex;
+  justify-content: center;
+}
+
+.product-card {
+  background: #fff;
+  border-radius: 20px;
+  width: 400px;
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.card-header {
+  margin-bottom: 15px;
+}
+
+.product-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.card-image img {
+  width: 180px;
+  height: auto;
+  border-radius: 15px;
+  object-fit: cover;
+  margin: 10px auto;
+}
+
+.product-description {
+  margin-top: 15px;
+}
+
+.product-description h2 {
+  font-size: 18px;
+}
+
+.product-description p {
+  font-size: 14px;
+  color: #555;
+}
+
+.cost-quantity {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  align-items: center;
+}
+
+.cost {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.quantity input {
+  width: 60px;
+  padding: 5px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn-cute {
+  border: none;
+  border-radius: 25px;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-cute:hover {
+  transform: scale(1.05);
+}
+
+.btn-outline-cute {
+  border-radius: 25px;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-outline-cute:hover {
+  color: white;
+}

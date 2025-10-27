@@ -1,0 +1,43 @@
+
+<div *ngIf="showNavbar" class="container-fluid my-header">
+  <div class="d-flex align-items-center px-3">
+    <!-- Logo or Title -->
+    <div class="d-flex align-items-center">
+     
+      <span class="store-name ms-2 btn-lg"><h2><strong><b>TRY-ON</b></strong></h2></span>
+    </div>
+
+    <!-- Navigation Links -->
+   
+
+    <!-- Right Side -->
+    <div class="d-flex ms-auto align-items-center btn-lg text-dark">
+      <form #Search="ngForm" (ngSubmit)="searchProducts()" class="d-flex me-3">
+        <input class="form-control text-dark btn-lg me-2" type="search" placeholder="Search products..." name="searchTitle" [(ngModel)]="searchTitle" aria-label="Search">
+        <button class="btn  text-dark me-2 btn-lg" type="submit">Search</button>
+        <button class="btn  text-dark btn-lg" type="button" (click)="resetSearch()">Reset</button>
+      </form>
+      <button *ngIf="!isHomePage && !isAdminPage" 
+         class="btn text-dark btn-lg"
+         routerLink="/home">
+        Home
+      </button>
+
+      <button *ngIf="!isCartPage" class="btn text-dark btn-lg" routerLink="/cart">
+        <i class="fa-solid fa-cart-shopping"></i>
+      </button>
+
+    
+       <button *ngIf="!isChatPage" class="btn text-dark btn-lg" routerLink="/chat-bot">
+        <i class="fa-solid fa-comment"></i>
+      </button>
+      
+      <button *ngIf="!isOrderspage" class="btn text-dark btn-lg" routerLink="/my-orders">
+        Orders
+      </button>
+      <button class="btn  btn-primary btn-lg" routerLink="/login">
+        Logout
+      </button>
+    </div>
+  </div>
+</div>

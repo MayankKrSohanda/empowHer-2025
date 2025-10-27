@@ -1,0 +1,33 @@
+/* Centers the card and limits width to 50% */
+.order-card {
+  width: 100%;
+  max-width: 600px; /* Optional: cap max width for large screens */
+  margin: 0 auto; /* centers the card */
+  border-radius: 10px;
+}
+
+/* Makes items neatly aligned inside card */
+.order-item-body {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Limit text width */
+.item-details {
+  flex-grow: 1;
+  max-width: 70%;
+}
+
+/* Date stays to the right */
+.order-date {
+  white-space: nowrap;
+  font-size: 0.9rem;
+  color: #333;
+}
+.my-orders{
+  margin:100px ;
+}
+.heading{
+  text-align: center;
+}

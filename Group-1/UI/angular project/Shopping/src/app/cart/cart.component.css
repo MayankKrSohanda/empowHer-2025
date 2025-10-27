@@ -1,0 +1,43 @@
+/* Container styling */
+.cart-container {
+  background: #111; /* deep black */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 193, 7, 0.3);
+}
+
+/* Custom yellow header row */
+.thead-warning {
+  background-color: #ffc107 !important; /* Bootstrap warning yellow */
+  color: #000 !important;
+  font-weight: bold;
+}
+
+/* Table rows hover */
+.table-dark tbody tr:hover {
+  background-color: #fdd86b  !important;
+  transition: background 0.3s ease-in-out;
+}
+
+/* Button hover effects */
+.btn-warning:hover {
+  background-color: #e0a800 !important;
+  color: #fff !important;
+}
+.place-button{
+    margin-right:100px;
+}
+.cart{
+  margin-top:100px !important;
+}
+.my-cart{
+  margin:100px 200px;
+  margin-left:150px;
+  padding-right:100px;
+}
+.my-cart-total{
+  margin-left:720px;
+  position: fixed;
+  padding-right:10px;
+
+}
