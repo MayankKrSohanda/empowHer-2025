@@ -1,0 +1,108 @@
+<div class="products-container">
+  <!-- Header Section -->
+  <div class="products-header">
+    <div class="header-content">
+      <h1 class="page-title">Product Management</h1>
+      <p class="page-subtitle">Manage your product inventory and catalog</p>
+    </div>
+  </div>
+
+  <!-- Stats Overview -->
+  <div class="stats-overview">
+    <div class="stat-card">
+      <div class="stat-icon total">
+        <i class="fas fa-boxes"></i>
+      </div>
+      <div class="stat-content">
+        <h3 class="stat-number">{{ products.length }}</h3>
+        <p class="stat-label">Total Products</p>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon active">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <div class="stat-content">
+        <h3 class="stat-number">{{ products.length }}</h3>
+        <p class="stat-label">Active Products</p>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon warning">
+        <i class="fas fa-exclamation-triangle"></i>
+      </div>
+      <div class="stat-content">
+        <h3 class="stat-number">{{ products.length - 5 }}</h3>
+        <p class="stat-label">Low Stock</p>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon danger">
+        <i class="fas fa-times-circle"></i>
+      </div>
+      <div class="stat-content">
+        <h3 class="stat-number">{{ products.length - 9 }}</h3>
+        <p class="stat-label">Out of Stock</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Products Grid -->
+  <div class="products-grid" *ngIf="products.length > 0">
+    <div class="product-card" *ngFor="let product of products">
+      <div class="product-image">
+        <img *ngIf="product.image" 
+             [src]="product.image" 
+             [alt]="product.title" 
+             class="product-img">
+        <div *ngIf="!product.image" class="no-image-placeholder">
+          <i class="fas fa-image"></i>
+          <p>No Image</p>
+        </div>
+        <div class="product-status" [class]="product.availableQuantity > 10 ? 'active' : (product.availableQuantity > 0 ? 'low-stock' : 'out-of-stock')">
+          {{ product.availableQuantity > 10 ? 'In Stock' : (product.availableQuantity > 0 ? 'Low Stock' : 'Out of Stock') }}
+        </div>
+      </div>
+      
+      <div class="product-info">
+        <h3 class="product-title">{{ product.title }}</h3>
+        <p class="product-description">{{ product.description | slice:0:100 }}{{ product.description.length > 100 ? '...' : '' }}</p>
+        
+        <div class="product-details">
+          <div class="detail-item">
+            <span class="detail-label">Price:</span>
+            <span class="detail-value price">{{ product.price | currency:'USD' }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Stock:</span>
+            <span class="detail-value" [class]="product.availableQuantity > 10 ? 'stock-high' : (product.availableQuantity > 0 ? 'stock-medium' : 'stock-low')">
+              {{ product.availableQuantity }} units
+            </span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Category:</span>
+            <span class="detail-value">{{ product.categoryName }}</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="product-actions">
+        <button class="action-btn edit" (click)="editProduct(product.id!)" title="Edit Product">
+          <i class="fas fa-edit"></i>
+        </button>
+        <button class="action-btn delete" (click)="deleteProduct(product.id!)" title="Delete Product">
+          <i class="fas fa-trash"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div class="empty-state" *ngIf="products.length === 0">
+    <div class="empty-icon">
+      <i class="fas fa-box-open"></i>
+    </div>
+    <h3>No Products Found</h3>
+    <p>No products are available. Add some products to get started.</p>
+  </div>
+</div>

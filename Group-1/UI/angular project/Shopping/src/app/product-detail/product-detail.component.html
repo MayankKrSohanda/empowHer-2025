@@ -1,0 +1,39 @@
+<div class="product-container my-prod" *ngIf="product">
+  <div class="product-card shadow-lg">
+    <div class="card-header text-center text-dark">
+      <h1 class="product-title">{{ product.title }}</h1>
+    </div>
+
+    <div class="card-image text-center">
+      <img *ngIf="product.image" [src]="product.image" alt="{{ product.title }}" />
+    </div>
+
+    <div class="card-body">
+      <div class="product-description">
+        <h2>Description</h2>
+        <p>{{ product.description }}</p>
+      </div>
+
+      <div class="cost-quantity">
+        <div class="cost">₹ {{ product.price }}</div>
+        <div class="quantity">
+          <label for="quantity">Qty:</label>
+          <input type="number" id="quantity" [(ngModel)]="selectedQuantity" min="1" />
+        </div>
+      </div>
+
+      <div class="buttons">
+        <button class="btn-cute bg-primary text-light btn-outline-light" (click)="addToCart()">Add To Cart</button>
+        <button class="btn-cute bg-primary text-light btn-outline-light" (click)="goToCart()"> Go To Cart</button>
+      </div>
+      <div *ngIf="alertMessage" class="alert alert-{{ alertType }} alert-dismissible fade show mt-2" role="alert">
+        {{ alertMessage }}
+        <button type="button" class="btn-close" (click)="alertMessage = null"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!product" class="loading-msg">
+  <p>Loading product details...</p>
+</div>

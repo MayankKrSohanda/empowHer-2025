@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+/* styles.css */
+html{
+  padding:0;
+  margin:0;
+}
+body {
+  margin: 0 !important;
+  padding:0 !important;
+  height: 100vh;
+background: linear-gradient(135deg, #F5F4FF 0%, #EDEBFF 100%) !important;
+  background-attachment: fixed; /* stays fixed while scrolling */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: black; /* make default text white for contrast */
+}

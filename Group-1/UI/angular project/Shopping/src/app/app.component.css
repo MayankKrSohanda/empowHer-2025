@@ -1,0 +1,11 @@
+.main-container{
+    display:flex;
+}
+.chatBot{
+    width:20%;
+    margin:20px;
+    height:100vh;
+}
+body{
+    background-color: #F5F4FF !important;
+}

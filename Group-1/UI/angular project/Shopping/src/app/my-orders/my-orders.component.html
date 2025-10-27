@@ -1,0 +1,35 @@
+<div class="container my-orders py-4">
+  <h2 class="mb-4 heading">My Orders</h2>
+
+  <div *ngIf="orders.length === 0" class="alert alert-info">
+    No orders found. Start shopping now!
+  </div>
+
+  <div *ngFor="let order of orders" class="order-section mb-4">
+    <div class="row g-4 justify-content-center">
+      <div class="col-lg-6"> 
+        <div *ngFor="let item of order.items" class="card mb-3 shadow-sm order-card">
+          <div class="card-body order-item-body">
+            <img [src]="getProductImage(item)" 
+                 alt="{{ item.productName }}" 
+                 width="80" 
+                 class="me-3 rounded">
+
+            <div class="flex-grow-1 item-details">
+              <h5 class="mb-1">{{ item.productName }}</h5>
+             
+              <div>Quantity: {{ item.quantity }}</div>
+              <div class="text-success fw-bold mt-1">
+                Total: {{ item.totalPrice | currency:'USD' }}
+              </div>
+            </div>
+
+            <div class="order-date">
+              <small>{{ order.orderDate | date:'mediumDate' }}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

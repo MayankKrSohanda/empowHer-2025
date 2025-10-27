@@ -1,0 +1,175 @@
+
+ .intro-section {
+     background: linear-gradient(135deg, rgba(245, 244, 255, 0.9) 0%, rgba(237, 235, 255, 0.9) 100%);
+     backdrop-filter: blur(8px);
+     margin: 100px 0 50px 0;
+     padding:0px;
+ }
+
+ .badge {
+     font-size: 0.9rem;
+     padding: 0.5rem 1rem;
+ }
+
+ .text-gradient {
+     background: linear-gradient(90deg, #4f46e5, #6366f1);
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+ }
+
+ .btn-gradient {
+     background: linear-gradient(90deg, #4f46e5, #6366f1);
+     color: white;
+     border: none;
+ }
+
+ .btn-gradient:hover {
+     background: linear-gradient(90deg, #6366f1, #4f46e5);
+ }
+
+ .btn-outline {
+     background-color: transparent;
+     border: 1px solid #4f46e5;
+     color: #4f46e5;
+ }
+
+ .btn-outline:hover {
+     background-color: #4f46e5;
+     color: white;
+ }
+
+ .stats h4 {
+     margin-bottom: 0;
+ }
+
+ .stats p {
+     font-size: 0.85rem;
+ }
+
+
+ .btn-custom {
+     background-color: #007bff;
+     border-color: #007bff;
+     color: white;
+     transition: background-color 0.3s, transform 0.3s;
+ }
+
+ .btn-custom:hover {
+     background-color: #0056b3;
+     transform: scale(1.05);
+ }
+
+ .btn-reset {
+     transition: transform 0.3s;
+ }
+
+ .btn-reset:hover {
+     transform: scale(1.05);
+ }
+
+ .form-control,
+ .form-select {
+     border-radius: 0.5rem;
+ }
+
+ .product-card {
+     transition: transform 0.3s, box-shadow 0.3s;
+ }
+
+ .product-card:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+ }
+
+ .title-highlight {
+     font-weight: 700;
+     color: #343a40;
+ }
+
+ .form-label {
+     font-weight: 500;
+ }
+
+ .custom-home {
+     margin-top: 100 !important;
+     padding: 0 !important;
+ }
+
+ .images-display {
+     margin-left: 0 !important;
+ }
+
+ .sidebar {
+     margin-top: 80px;
+     height: 100vh;
+     position: fixed;
+     width: 300px;
+ }
+
+ .main-content {
+     margin-top: 80px !important;
+     padding: 20px 0 0 70px !important;
+     margin-left: 300px !important;
+ }
+
+ .image-section img {
+     height: 450px !important;
+     width: 550px;
+ }
+
+ html {
+     scroll-behavior: smooth;
+ }
+
+ .filter-container {
+     background: linear-gradient(135deg, rgba(245, 244, 255, 0.9) 0%, rgba(237, 235, 255, 0.9) 100%);
+ }
+
+ .custom-home {
+     background: linear-gradient(135deg, rgba(245, 244, 255, 0.9) 0%, rgba(237, 235, 255, 0.9) 100%);
+ }
+
+ .my-bg{
+         background: linear-gradient(135deg, rgba(245, 244, 255, 0.9) 0%, rgba(237, 235, 255, 0.9) 100%);
+
+ }
+ .text-gradient {
+     background: linear-gradient(90deg, #4f46e5, #6366f1);
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+ }
+
+ .btn-gradient {
+     background: linear-gradient(90deg, #4f46e5, #6366f1);
+     color: white;
+ }
+
+ .btn-gradient:hover {
+     background: linear-gradient(90deg, #6366f1, #4f46e5);
+ }
+ .bg-gradient {
+     background: linear-gradient(135deg, rgba(245, 244, 255, 0.9) 0%, rgba(237, 235, 255, 0.9) 100%);
+  color: white;
+}
+
+.filter-card {
+  background: linear-gradient(135deg, rgba(245, 244, 255, 0.9) 0%, rgba(237, 235, 255, 0.9) 100%);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.filter-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.fs-2 {
+  font-size: 2rem;
+}
+.photo-section{
+    /* width:300px; */
+    padding-left:200px;
+}
+.image-section{
+      padding-left:50px;
+  
+}
