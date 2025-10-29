@@ -25,7 +25,7 @@ export class MyOrdersComponent implements OnInit {
     if (item.productImage) {
       return item.productImage;
     }
-    // Fallback to a default image if no image is provided
+    
     return 'assets/Screenshot 2025-09-14 000242.png';
   }
 }

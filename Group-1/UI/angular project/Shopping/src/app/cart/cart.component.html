@@ -15,7 +15,7 @@
         <div class="flex-grow-1">
           <h5 class="mb-1">{{ item.productName }}</h5>
           <div class="fw-bold text-primary mt-2">
-            {{ item.price | currency:'USD' }}
+            ₹ {{ item.price }}
           </div>
           <div class="d-flex align-items-center">Quantity: 
           <span>{{ item.quantity }}</span>
@@ -35,7 +35,7 @@
     <div class="card shadow-sm p-3">
       <h5 class="fw-bold">Cart Total</h5>
       <div class="fs-4 text-primary mb-3">
-        {{ calculateTotal() | currency:'USD' }}
+        ₹ {{ calculateTotal() }}
       </div>
       <button class="btn btn-lg btn-primary fw-bold  shadow-sm w-100"
               (click)="placeOrder()">

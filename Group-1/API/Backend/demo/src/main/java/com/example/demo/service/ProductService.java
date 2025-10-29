@@ -1,7 +1,9 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Product;
+import com.example.demo.model.ProductCategory;
 import com.example.demo.repository.ProductRepository;
+import com.example.demo.repository.ProductCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +16,13 @@ public class ProductService {
 
     @Autowired
     private ProductRepository productRepository;
+    
+    @Autowired
+    private ProductCategoryRepository productCategoryRepository;
 
-    public ProductService(ProductRepository productRepository) {
+    public ProductService(ProductRepository productRepository, ProductCategoryRepository productCategoryRepository) {
         this.productRepository = productRepository;
+        this.productCategoryRepository = productCategoryRepository;
     }
 
     public Product addProduct(Product product){
@@ -57,9 +63,21 @@ public class ProductService {
         existing.setDescription(product.getDescription());
         existing.setPrice(product.getPrice());
         existing.setAvailableQuantity(product.getAvailableQuantity());
-        existing.setCategory(product.getCategory());
+        existing.setActive(product.isActive());
+        
+        // Load the category from the database if category id is provided
+        if (product.getCategory() != null && product.getCategory().getId() != null) {
+            Optional<ProductCategory> categoryOpt = productCategoryRepository.findById(product.getCategory().getId());
+            if (categoryOpt.isPresent()) {
+                existing.setCategory(categoryOpt.get());
+            }
+        }
 
         return productRepository.save(existing);
+    }
+
+    public long getProductCount() {
+        return productRepository.count();
     }
 
 }

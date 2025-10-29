@@ -28,3 +28,6 @@
   padding: 5px;
   border-radius: 8px;
 }
+.bot-reply {
+  white-space: pre-line;
+}

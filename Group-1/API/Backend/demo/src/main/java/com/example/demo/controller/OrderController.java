@@ -119,6 +119,18 @@ public class OrderController {
         return ResponseEntity.ok(responseList);
     }
 
+    @GetMapping("/all")
+    public ResponseEntity<List<OrderResponseDTO>> getAllOrders() {
+        List<OrderDetail> orders = orderRepo.findAll();
+
+        List<OrderResponseDTO> responseList = new ArrayList<>();
+        for (OrderDetail order : orders) {
+            responseList.add(toOrderResponseDTO(order));
+        }
+
+        return ResponseEntity.ok(responseList);
+    }
+
     private OrderResponseDTO toOrderResponseDTO(OrderDetail order) {
         OrderResponseDTO dto = new OrderResponseDTO();
         dto.setOrderId(order.getOrder_id());

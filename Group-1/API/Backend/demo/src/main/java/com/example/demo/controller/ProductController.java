@@ -36,18 +36,11 @@ public class ProductController {
         this.productService=productService;
     }
 
-//    @PostMapping("/add-product")
-//    public ResponseEntity<Product> addProduct(@RequestBody Product product){
-//        System.out.println("📦 Incoming Product: " + product);
-//
-//        Product addpro=productService.addProduct(product);
-//        return ResponseEntity.status(HttpStatus.CREATED).body(addpro);
-//    }
+
     @PostMapping(value = "/add-product", consumes ={MediaType.MULTIPART_FORM_DATA_VALUE} )
     public Product addProduct(@RequestPart("product") Product product,
                                               @RequestPart("imageFile")MultipartFile[] file){
-//        Product addpro=productService.addProduct(product);
-//        return ResponseEntity.status(HttpStatus.CREATED).body(addpro);
+
         try{
             Set<ImageModel> images = uploadImage(file);
             product.setProductImages(images);
@@ -74,7 +67,7 @@ public class ProductController {
 
     @DeleteMapping("/delete-product/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable Integer id){
-        System.out.println("📦 Incoming id: " + id);
+        System.out.println("Incoming id: " + id);
 
         if(productService.deleteProduct(id)){
             return ResponseEntity.noContent().build();
@@ -141,6 +134,12 @@ public class ProductController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/count")
+    public ResponseEntity<Long> getProductCount() {
+        long count = productService.getProductCount();
+        return ResponseEntity.ok(count);
     }
 
 

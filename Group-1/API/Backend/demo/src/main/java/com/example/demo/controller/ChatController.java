@@ -52,24 +52,29 @@ public class ChatController {
         if(query.contains("what are the options for payment how to proceed with payment")){
             return "We accept credit card, UPI, and Cash on Delivery.";
         }
-        if(query.contains("show products") || query.contains("list products")){
-            List<ProductResponse> products=productService.findAll().stream().map(p->{
-                ProductResponse dto=new ProductResponse();
+        if (query.contains("show products") || query.contains("list products")) {
+            List<ProductResponse> products = productService.findAll().stream().map(p -> {
+                ProductResponse dto = new ProductResponse();
                 dto.setId(p.getId());
                 dto.setTitle(p.getTitle());
                 dto.setPrice(p.getPrice());
                 return dto;
             }).toList();
-            if(products.isEmpty()){
+
+            if (products.isEmpty()) {
                 return "Sorry, no products are available right now.";
             }
-            StringBuilder sb=new StringBuilder("Here are some products");
-            for(ProductResponse pr:products){
-                sb.append("- ").append(pr.getTitle()).append("(₹").append(pr.getPrice()).append(")\n");
-                System.out.println();
+
+
+            StringBuilder sb = new StringBuilder("Here are some products:\n\n");
+            for (ProductResponse pr : products) {
+                sb.append("• ").append(pr.getTitle())
+                        .append(" (₹").append(pr.getPrice()).append(")\n");
             }
+
             return sb.toString();
         }
+
 
 
         return "Sorry, I didn't understand. Can you please rephrase?";

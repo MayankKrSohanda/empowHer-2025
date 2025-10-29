@@ -1,6 +1,6 @@
 <div class="admin-container">
   <div class="admin-layout">
-    <!-- Modern Sidebar -->
+   
     <aside class="sidebar">
       <div class="sidebar-header">
         <div class="admin-profile">
@@ -62,14 +62,8 @@
           <div class="dashboard-header">
             <div class="header-content">
               <h1 class="dashboard-title">Dashboard Overview</h1>
-              <p class="dashboard-subtitle">Welcome back! Here's what's happening with your store today.</p>
             </div>
-            <div class="header-actions">
-              <button class="btn btn-primary">
-                <i class="fas fa-download"></i>
-                Export Report
-              </button>
-            </div>
+            
           </div>
 
           <!-- Stats Grid -->
@@ -79,12 +73,9 @@
                 <i class="fas fa-dollar-sign"></i>
               </div>
               <div class="stat-content">
-                <h3 class="stat-value">$45,231.89</h3>
+                <h3 class="stat-value">{{ totalRevenue | currency:'₹':'symbol':'1.0-0' }}</h3>
                 <p class="stat-label">Total Revenue</p>
-                <div class="stat-change positive">
-                  <i class="fas fa-arrow-up"></i>
-                  <span>+20.1% from last month</span>
-                </div>
+                
               </div>
             </div>
 
@@ -93,88 +84,66 @@
                 <i class="fas fa-shopping-cart"></i>
               </div>
               <div class="stat-content">
-                <h3 class="stat-value">1,234</h3>
+                <h3 class="stat-value">{{ getFormattedNumber(totalOrders) }}</h3>
                 <p class="stat-label">Total Orders</p>
-                <div class="stat-change positive">
-                  <i class="fas fa-arrow-up"></i>
-                  <span>+12.5% from last month</span>
-                </div>
+                
               </div>
             </div>
 
-            <div class="stat-card customers">
-              <div class="stat-icon">
-                <i class="fas fa-users"></i>
-              </div>
-              <div class="stat-content">
-                <h3 class="stat-value">5,678</h3>
-                <p class="stat-label">Active Customers</p>
-                <div class="stat-change positive">
-                  <i class="fas fa-arrow-up"></i>
-                  <span>+8.2% from last month</span>
-                </div>
-              </div>
-            </div>
+          
 
             <div class="stat-card products">
               <div class="stat-icon">
                 <i class="fas fa-boxes"></i>
               </div>
               <div class="stat-content">
-                <h3 class="stat-value">892</h3>
+                <h3 class="stat-value">{{ getFormattedNumber(totalProducts) }}</h3>
                 <p class="stat-label">Total Products</p>
-                <div class="stat-change negative">
-                  <i class="fas fa-arrow-down"></i>
-                  <span>-2.4% from last month</span>
-                </div>
+                
               </div>
             </div>
           </div>
 
           <!-- Content Grid -->
+         
+          
           <div class="content-grid">
             <!-- Recent Orders -->
             <div class="content-card orders-card">
               <div class="card-header">
                 <h3 class="card-title">Recent Orders</h3>
-                <button class="btn btn-outline">View All</button>
               </div>
-              <div class="card-content">
-                <div class="order-list">
-                  <div class="order-item">
-                    <div class="order-info">
-                      <div class="order-id">#ORD-001</div>
-                      <div class="order-product">Wireless Headphones</div>
-                      <div class="order-customer">John Doe</div>
+              <div class="container my-orders py-4">
+              
+                <div *ngIf="orders.length === 0" class="alert alert-info">
+                  No orders found. Start shopping now!
+                </div>
+              
+                <div *ngFor="let order of orders" class="order-section mb-4">
+                  <div class="row g-4 justify-content-center">
+                    <div class="col-lg-12"> 
+                      <div *ngFor="let item of order.items" class="card mb-3 shadow-sm order-card">
+                        <div class="card-body order-item-body">
+                          <img [src]="getProductImage(item)" 
+                               alt="{{ item.productName }}" 
+                               width="100" 
+                               class="me-3 rounded">
+              
+                          <div class="flex-grow-1 item-details">
+                            <h5 class="mb-1">{{ item.productName }}</h5>
+                           
+                            <div>Quantity: {{ item.quantity }}</div>
+                            <div class="text-success fw-bold mt-1">
+                              Total: ₹{{ item.totalPrice }}
+                            </div>
+                          </div>
+              
+                          <div class="order-date">
+                            <small>{{ order.orderDate | date:'mediumDate' }}</small>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div class="order-status">
-                      <span class="status-badge completed">Completed</span>
-                    </div>
-                    <div class="order-amount">$299.99</div>
-                  </div>
-
-                  <div class="order-item">
-                    <div class="order-info">
-                      <div class="order-id">#ORD-002</div>
-                      <div class="order-product">Smart Watch</div>
-                      <div class="order-customer">Jane Smith</div>
-                    </div>
-                    <div class="order-status">
-                      <span class="status-badge processing">Processing</span>
-                    </div>
-                    <div class="order-amount">$549.99</div>
-                  </div>
-
-                  <div class="order-item">
-                    <div class="order-info">
-                      <div class="order-id">#ORD-003</div>
-                      <div class="order-product">Laptop Stand</div>
-                      <div class="order-customer">Mike Johnson</div>
-                    </div>
-                    <div class="order-status">
-                      <span class="status-badge pending">Pending</span>
-                    </div>
-                    <div class="order-amount">$89.99</div>
                   </div>
                 </div>
               </div>
@@ -207,6 +176,7 @@
               </div>
             </div>
           </div>
+          
         </div>
       </div>
     </main>

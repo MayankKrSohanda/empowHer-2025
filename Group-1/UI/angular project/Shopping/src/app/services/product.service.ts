@@ -52,4 +52,8 @@ export class ProductService {
   return this.http.put<Product>(`${this.apiUrl}/update-product/${id}`, product);
 }
 
+  getProductCount(): Observable<number> {
+    return this.http.get<number>(`${this.apiUrl}/count`);
+  }
+
 }
