@@ -12,7 +12,7 @@
 
     <!-- Right Side -->
     <div class="d-flex ms-auto align-items-center btn-lg text-dark">
-      <form #Search="ngForm" (ngSubmit)="searchProducts()" class="d-flex me-3">
+      <form *ngIf="isHomePage" #Search="ngForm" (ngSubmit)="searchProducts()" class="d-flex me-3">
         <input class="form-control text-dark btn-lg me-2" type="search" placeholder="Search products..." name="searchTitle" [(ngModel)]="searchTitle" aria-label="Search">
         <button class="btn  text-dark me-2 btn-lg" type="submit">Search</button>
         <button class="btn  text-dark btn-lg" type="button" (click)="resetSearch()">Reset</button>

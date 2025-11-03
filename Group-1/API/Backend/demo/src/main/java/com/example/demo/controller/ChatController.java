@@ -40,16 +40,16 @@ public class ChatController {
         return response;
     }
     private String getBotReply(String query){
-        if(query.contains("hello") || query.contains("hi")){
-            return "Hello! How can I hellp you today?";
+        if(query.contains("hello")||query.contains("hi") ){
+            return "Hello! How can I help you today?";
         }
-        if(query.contains("shipping")){
+        else if(query.contains("shipping")){
             return "We offer free shipping for orders above 500rs";
         }
-        if(query.contains("walk through")){
+        else if(query.contains("walk through")){
             return "Home page -> click on product image to view details of that product -> add to cart -> proceed with order";
         }
-        if(query.contains("what are the options for payment how to proceed with payment")){
+        else if(query.contains("what are the options for payment how to proceed with payment")||query.contains("payment methods")){
             return "We accept credit card, UPI, and Cash on Delivery.";
         }
         if (query.contains("show products") || query.contains("list products")) {

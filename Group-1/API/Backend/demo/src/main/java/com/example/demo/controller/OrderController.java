@@ -9,6 +9,7 @@ import com.example.demo.model.OrderDetail;
 import com.example.demo.model.OrderProduct;
 import com.example.demo.model.Product;
 import com.example.demo.model.User;
+import com.example.demo.repository.CartRepository;
 import com.example.demo.repository.LoginRepository;
 import com.example.demo.repository.OrderRepository;
 import com.example.demo.repository.ProductRepository;
@@ -99,7 +100,6 @@ public class OrderController {
 
         OrderDetail saved = orderRepo.save(order);
         OrderResponseDTO response = toOrderResponseDTO(saved);
-
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 

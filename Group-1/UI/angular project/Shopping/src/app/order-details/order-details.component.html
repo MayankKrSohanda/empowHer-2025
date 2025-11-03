@@ -7,11 +7,6 @@
         <div class="card-body">
           <h4 class="card-title fw-bold text-primary mb-3">Cart Summary</h4>
 
-          <!-- Empty Cart -->
-          <div *ngIf="cartItems.length === 0" 
-               class="alert alert-dark  text-dark text-center fw-semibold">
-            Your cart is empty.
-          </div>
 
           <!-- Cart Table -->
           <div *ngIf="cartItems.length > 0" class="table-responsive">

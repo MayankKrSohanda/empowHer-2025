@@ -42,6 +42,21 @@ public class ProductController {
                                               @RequestPart("imageFile")MultipartFile[] file){
 
         try{
+            // Basic validations
+            if (product.getAvailableQuantity() < 0) {
+                throw new IllegalArgumentException("availableQuantity cannot be negative");
+            }
+            long maxSizeBytes = 2 * 1024 * 1024; // 2MB
+            for (MultipartFile f : file) {
+                if (f.getSize() > maxSizeBytes) {
+                    throw new IllegalArgumentException("Image exceeds 2MB limit");
+                }
+                String contentType = f.getContentType();
+                if (contentType == null || 
+                        !(contentType.equals("image/jpeg") || contentType.equals("image/png") || contentType.equals("image/webp"))) {
+                    throw new IllegalArgumentException("Only JPEG, PNG, WEBP images are allowed");
+                }
+            }
             Set<ImageModel> images = uploadImage(file);
             product.setProductImages(images);
             return productService.addProduct(product);

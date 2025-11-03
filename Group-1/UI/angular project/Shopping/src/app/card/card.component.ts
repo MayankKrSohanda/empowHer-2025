@@ -34,7 +34,7 @@ export class CardComponent {
       },
       error: (err) => {
         this.alertType='danger';
-        this.alertMessage="Error adding to cart";
+        this.alertMessage = (err && err.error) ? err.error : "Error adding to cart";
         setTimeout(()=>this.alertMessage=null,3000);
       }
     });

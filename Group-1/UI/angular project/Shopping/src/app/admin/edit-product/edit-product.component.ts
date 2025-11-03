@@ -46,7 +46,7 @@ ngOnInit(): void {
     this.categories=[
       {id: 1, name: 'Fashion'},
       {id: 2, name: 'Electronics'},
-      {id: 3, name: 'Jwelleries'},
+      {id: 3, name: 'Jewelleries'},
       {id: 4, name: 'Sports'}
     ]
 }
@@ -56,7 +56,6 @@ ngOnDestroy(): void {
 }
 
 onSubmit(): void {
-  // Transform the product to match backend expectations
   const productToUpdate = {
     id: this.product.id,
     title: this.product.title,
@@ -70,6 +69,7 @@ onSubmit(): void {
   this.productService.updateProduct(this.product.id!, productToUpdate).subscribe({
     next: () => {
       alert('Product updated successfully!');
+      console.log("updated succesfully");
       this.router.navigate(['/admin']); // go back to admin dashboard
     },
     error: (err) => {

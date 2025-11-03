@@ -21,7 +21,7 @@ export class ProductFormComponent  {
 categories = [
   { id: 1, name: 'Fashion' },
   { id: 2, name: 'Electronics' },
-  { id: 3, name: 'Jwelleries' },
+  { id: 3, name: 'Jewelleries' },
   { id: 4, name: 'Sports' }
 ];
 

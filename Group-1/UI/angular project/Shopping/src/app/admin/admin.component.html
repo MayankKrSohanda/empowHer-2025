@@ -1,6 +1,6 @@
 <div class="admin-container">
   <div class="admin-layout">
-   
+
     <aside class="sidebar">
       <div class="sidebar-header">
         <div class="admin-profile">
@@ -13,7 +13,7 @@
           </div>
         </div>
       </div>
-      
+
       <nav class="sidebar-nav">
         <ul class="nav-list">
           <li class="nav-item">
@@ -51,11 +51,11 @@
         <div *ngIf="displayProduct" class="page-content">
           <app-product-list></app-product-list>
         </div>
-        
+
         <div *ngIf="addProduct" class="page-content">
           <app-product-form></app-product-form>
         </div>
-        
+
         <!-- Enhanced Dashboard -->
         <div *ngIf="dashboard" class="dashboard">
           <!-- Dashboard Header -->
@@ -63,7 +63,7 @@
             <div class="header-content">
               <h1 class="dashboard-title">Dashboard Overview</h1>
             </div>
-            
+
           </div>
 
           <!-- Stats Grid -->
@@ -75,7 +75,7 @@
               <div class="stat-content">
                 <h3 class="stat-value">{{ totalRevenue | currency:'₹':'symbol':'1.0-0' }}</h3>
                 <p class="stat-label">Total Revenue</p>
-                
+
               </div>
             </div>
 
@@ -86,11 +86,11 @@
               <div class="stat-content">
                 <h3 class="stat-value">{{ getFormattedNumber(totalOrders) }}</h3>
                 <p class="stat-label">Total Orders</p>
-                
+
               </div>
             </div>
 
-          
+
 
             <div class="stat-card products">
               <div class="stat-icon">
@@ -99,14 +99,33 @@
               <div class="stat-content">
                 <h3 class="stat-value">{{ getFormattedNumber(totalProducts) }}</h3>
                 <p class="stat-label">Total Products</p>
-                
+
+              </div>
+            </div>
+          
+            <div class="stat-card products">
+              <div class="stat-icon">
+                <i class="fas fa-warehouse"></i>
+              </div>
+              <div class="stat-content">
+                <h3 class="stat-value">{{ getFormattedNumber(inStock) }}</h3>
+                <p class="stat-label">In Stock</p>
+              </div>
+            </div>
+            <div class="stat-card products">
+              <div class="stat-icon">
+                <i class="fas fa-ban"></i>
+              </div>
+              <div class="stat-content">
+                <h3 class="stat-value">{{ getFormattedNumber(outOfStock) }}</h3>
+                <p class="stat-label">Out of Stock</p>
               </div>
             </div>
           </div>
 
           <!-- Content Grid -->
-         
-          
+
+
           <div class="content-grid">
             <!-- Recent Orders -->
             <div class="content-card orders-card">
@@ -114,30 +133,28 @@
                 <h3 class="card-title">Recent Orders</h3>
               </div>
               <div class="container my-orders py-4">
-              
+
                 <div *ngIf="orders.length === 0" class="alert alert-info">
                   No orders found. Start shopping now!
                 </div>
-              
+
                 <div *ngFor="let order of orders" class="order-section mb-4">
                   <div class="row g-4 justify-content-center">
-                    <div class="col-lg-12"> 
+                    <div class="col-lg-12">
                       <div *ngFor="let item of order.items" class="card mb-3 shadow-sm order-card">
                         <div class="card-body order-item-body">
-                          <img [src]="getProductImage(item)" 
-                               alt="{{ item.productName }}" 
-                               width="100" 
-                               class="me-3 rounded">
-              
+                          <img [src]="getProductImage(item)" alt="{{ item.productName }}" width="100"
+                            class="me-3 rounded">
+
                           <div class="flex-grow-1 item-details">
                             <h5 class="mb-1">{{ item.productName }}</h5>
-                           
+
                             <div>Quantity: {{ item.quantity }}</div>
                             <div class="text-success fw-bold mt-1">
                               Total: ₹{{ item.totalPrice }}
                             </div>
                           </div>
-              
+
                           <div class="order-date">
                             <small>{{ order.orderDate | date:'mediumDate' }}</small>
                           </div>
@@ -149,34 +166,9 @@
               </div>
             </div>
 
-            <!-- Quick Actions -->
-            <div class="content-card actions-card">
-              <div class="card-header">
-                <h3 class="card-title">Quick Actions</h3>
-              </div>
-              <div class="card-content">
-                <div class="action-buttons">
-                  <button class="action-btn primary" (click)="addProducts()">
-                    <i class="fas fa-plus"></i>
-                    <span>Add Product</span>
-                  </button>
-                  <button class="action-btn secondary">
-                    <i class="fas fa-users-cog"></i>
-                    <span>Manage Users</span>
-                  </button>
-                  <button class="action-btn secondary">
-                    <i class="fas fa-chart-line"></i>
-                    <span>View Analytics</span>
-                  </button>
-                  <button class="action-btn secondary">
-                    <i class="fas fa-cog"></i>
-                    <span>Settings</span>
-                  </button>
-                </div>
-              </div>
-            </div>
+
           </div>
-          
+
         </div>
       </div>
     </main>

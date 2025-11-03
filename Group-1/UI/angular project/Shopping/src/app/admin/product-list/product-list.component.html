@@ -7,45 +7,7 @@
     </div>
   </div>
 
-  <!-- Stats Overview -->
-  <div class="stats-overview">
-    <div class="stat-card">
-      <div class="stat-icon total">
-        <i class="fas fa-boxes"></i>
-      </div>
-      <div class="stat-content">
-        <h3 class="stat-number">{{ products.length }}</h3>
-        <p class="stat-label">Total Products</p>
-      </div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-icon active">
-        <i class="fas fa-check-circle"></i>
-      </div>
-      <div class="stat-content">
-        <h3 class="stat-number">{{ products.length }}</h3>
-        <p class="stat-label">Active Products</p>
-      </div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-icon warning">
-        <i class="fas fa-exclamation-triangle"></i>
-      </div>
-      <div class="stat-content">
-        <h3 class="stat-number">{{ products.length - 5 }}</h3>
-        <p class="stat-label">Low Stock</p>
-      </div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-icon danger">
-        <i class="fas fa-times-circle"></i>
-      </div>
-      <div class="stat-content">
-        <h3 class="stat-number">{{ products.length - 9 }}</h3>
-        <p class="stat-label">Out of Stock</p>
-      </div>
-    </div>
-  </div>
+
 
   <!-- Products Grid -->
   <div class="products-grid" *ngIf="products.length > 0">

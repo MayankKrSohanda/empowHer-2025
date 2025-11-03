@@ -16,7 +16,7 @@ public class ProductService {
 
     @Autowired
     private ProductRepository productRepository;
-    
+
     @Autowired
     private ProductCategoryRepository productCategoryRepository;
 
@@ -64,7 +64,7 @@ public class ProductService {
         existing.setPrice(product.getPrice());
         existing.setAvailableQuantity(product.getAvailableQuantity());
         existing.setActive(product.isActive());
-        
+
         // Load the category from the database if category id is provided
         if (product.getCategory() != null && product.getCategory().getId() != null) {
             Optional<ProductCategory> categoryOpt = productCategoryRepository.findById(product.getCategory().getId());

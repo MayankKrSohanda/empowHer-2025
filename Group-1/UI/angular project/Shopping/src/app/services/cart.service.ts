@@ -13,6 +13,7 @@ export class CartService{
  
   
     private apiUrl='http://localhost:8080/api/cart';
+    private baseUrl = 'http://localhost:8080/api/cart';
 
     private items: CartItem[] = [];
     constructor(private http: HttpClient){}
@@ -34,6 +35,10 @@ export class CartService{
    getCheckoutItems(): CartItem[] {
     return this.items;
   }
+  clearCart(userId: number): Observable<any> {
+  return this.http.delete(`http://localhost:8080/api/cart/clear/${userId}`);
+}
+
 placeOrder(userId: number): Observable<any> {
     return this.http.post(`${this.apiUrl}/placeOrders/${userId}`, {});
   }

@@ -57,13 +57,31 @@ export class CartComponent implements OnInit {
   }
 
   placeOrder(): void {
-    console.log("moving to order-details page");
-    this.router.navigateByUrl('/order-details');
+  if (this.cartItems.length === 0) {
+    console.warn("Cart is already empty");
+    return;
   }
+
+  // Clear local cart items
+  this.cartItems = [];
+
+  // ✅ Clear the product map as well
+  this.products.clear();
+
+  // Optional: Clear cart on backend
+  this.cartService.clearCart(this.userId).subscribe({
+    next: () => console.log("Cart cleared on backend"),
+    error: (err) => console.error("Error clearing cart", err)
+  });
+
+  // Navigate to order-details page
+  this.router.navigateByUrl('/order-details');
+}
+
 
   getProductImage(item:CartItem): string{
     const product=this.products.get(item.productId);
-    return product?.image||"assets/no-image.png";
+    return product?.image||"assets/Screenshot 2025-09-14 000242.png";
   }
 
 }

@@ -48,9 +48,10 @@ export class ProductService {
     deleteProduct(id: number): Observable<void> {
         return this.http.delete<void>(`${this.apiUrl}/delete-product/${id}`);
     }
-    updateProduct(id: number, product: Product): Observable<Product> {
-  return this.http.put<Product>(`${this.apiUrl}/update-product/${id}`, product);
+    updateProduct(id: number, product: Product): Observable<any> {
+  return this.http.put(`${this.apiUrl}/update-product/${id}`, product, { responseType: 'text' });
 }
+
 
   getProductCount(): Observable<number> {
     return this.http.get<number>(`${this.apiUrl}/count`);

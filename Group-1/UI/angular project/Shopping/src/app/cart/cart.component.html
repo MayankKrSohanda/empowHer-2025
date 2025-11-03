@@ -2,6 +2,9 @@
  <!-- cart.component.html -->
 <div class="row g-4 my-cart">
   <div class="col-lg-8">
+    <div *ngIf="cartItems.length === 0" class="alert alert-info">
+    No items in the cart!
+  </div>
     <div *ngFor="let item of cartItems" class="card mb-3 shadow-sm">
       <div class="card-body d-flex align-items-center justify-content-between">
 

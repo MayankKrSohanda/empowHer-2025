@@ -7,6 +7,7 @@ import com.example.demo.model.User;
 import com.example.demo.repository.CartRepository;
 import com.example.demo.repository.LoginRepository;
 import com.example.demo.repository.ProductRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,12 @@ public class CartService {
     @Autowired
     private ProductRepository productRepository;
 
+    @Transactional
+    public void clearCart(Integer userId) {
+        User user = loginRepository.findById(userId)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        cartRepository.deleteByUser(user);
+    }
     public void addToCart(Integer userId, Integer productId, int quantity) {
 
         Optional<User> userOptional = loginRepository.findById(userId);

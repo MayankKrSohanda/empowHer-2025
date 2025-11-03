@@ -80,9 +80,14 @@ export class OrderDetailsComponent implements OnInit {
       next: (order: OrderDetail) => {
         this.alertType='success';
       this.alertMessage="Order placed successfully";
+      this.cartItems = [];
+      this.cartService.clearCart(1).subscribe({
+        next: () => console.log("Cart cleared on backend"),
+        error: err => console.error("Error clearing cart", err)
+      });
       setTimeout(()=>this.alertMessage=null,3000);
-        console.log('Order placed successfully', order);
-        this.router.navigateByUrl('/order-details', { state: { order } });
+        console.log('Order placed successfully & redirecting to my-orders page', order);
+        this.router.navigateByUrl('/my-orders', { state: { order } });
       },
       error: (err) => {
         this.alertType='danger';

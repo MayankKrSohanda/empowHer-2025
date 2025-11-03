@@ -19,6 +19,9 @@ export class AdminComponent implements OnInit, OnDestroy {
   totalRevenue: number = 0;
   totalOrders: number = 0;
   totalProducts: number = 0;
+  activeProducts: number = 0;
+  inStock: number = 0;
+  outOfStock: number = 0;
 
   constructor(private router:Router, private navbarService: NavbarService,private orderService: OrderService, private productService: ProductService){}
   
@@ -40,8 +43,13 @@ export class AdminComponent implements OnInit, OnDestroy {
     });
 
     // Get product count
-    this.productService.getProductCount().subscribe({
-      next: (count: number) => this.totalProducts = count,
+    this.productService.getAllProducts().subscribe({
+      next: (products) => {
+        this.totalProducts = products.length;
+        this.activeProducts = products.filter(p => (p as any).isActive !== false).length;
+        this.inStock = products.filter(p => p.availableQuantity > 0).length;
+        this.outOfStock = products.filter(p => p.availableQuantity === 0).length;
+      },
       error: (err: any) => console.error(err)
     });
   }
